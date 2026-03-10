@@ -1,0 +1,367 @@
+{
+  "aboutMe": {
+    "name": "About Me",
+    "description": "",
+    "displayField": "description",
+    "fields": [
+      {
+        "id": "description",
+        "name": "description",
+        "type": "Text",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "picture",
+        "name": "picture",
+        "type": "Link",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false,
+        "linkType": "Asset"
+      },
+      {
+        "id": "linkedIn",
+        "name": "linkedIn",
+        "type": "Symbol",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "github",
+        "name": "github",
+        "type": "Symbol",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "getonboard",
+        "name": "getonboard",
+        "type": "Symbol",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      }
+    ],
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "kovonvzjpjzy"
+        }
+      },
+      "id": "aboutMe",
+      "type": "ContentType",
+      "createdAt": "2026-03-10T03:42:04.197Z",
+      "updatedAt": "2026-03-10T03:43:00.019Z",
+      "environment": {
+        "sys": {
+          "id": "master",
+          "type": "Link",
+          "linkType": "Environment"
+        }
+      },
+      "publishedVersion": 3,
+      "publishedAt": "2026-03-10T03:43:00.019Z",
+      "firstPublishedAt": "2026-03-10T03:42:04.568Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "publishedCounter": 2,
+      "version": 4,
+      "publishedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "urn": "crn:contentful:::content:spaces/kovonvzjpjzy/environments/master/content_types/aboutMe"
+    }
+  },
+  "experiences": {
+    "name": "Experiences",
+    "description": "",
+    "displayField": "company",
+    "fields": [
+      {
+        "id": "id",
+        "name": "id",
+        "type": "Integer",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "company",
+        "name": "company",
+        "type": "Symbol",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "type": "Text",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "showcase",
+        "name": "showcase",
+        "type": "Array",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false,
+        "items": {
+          "type": "Link",
+          "validations": [],
+          "linkType": "Asset"
+        }
+      },
+      {
+        "id": "beginDate",
+        "name": "Begin Date",
+        "type": "Date",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "endDate",
+        "name": "End Date",
+        "type": "Date",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "stack",
+        "name": "stack",
+        "type": "Array",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false,
+        "items": {
+          "type": "Symbol",
+          "validations": []
+        }
+      }
+    ],
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "kovonvzjpjzy"
+        }
+      },
+      "id": "experiences",
+      "type": "ContentType",
+      "createdAt": "2026-03-09T01:26:52.828Z",
+      "updatedAt": "2026-03-09T01:26:53.741Z",
+      "environment": {
+        "sys": {
+          "id": "master",
+          "type": "Link",
+          "linkType": "Environment"
+        }
+      },
+      "publishedVersion": 1,
+      "publishedAt": "2026-03-09T01:26:53.741Z",
+      "firstPublishedAt": "2026-03-09T01:26:53.741Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "publishedCounter": 1,
+      "version": 2,
+      "publishedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "urn": "crn:contentful:::content:spaces/kovonvzjpjzy/environments/master/content_types/experiences"
+    }
+  },
+  "personalProjects": {
+    "name": "Personal Projects",
+    "description": "",
+    "displayField": "name",
+    "fields": [
+      {
+        "id": "id",
+        "name": "id",
+        "type": "Integer",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "name",
+        "name": "name",
+        "type": "Symbol",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "type": "Text",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "showcase",
+        "name": "showcase",
+        "type": "Array",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false,
+        "items": {
+          "type": "Link",
+          "validations": [],
+          "linkType": "Asset"
+        }
+      },
+      {
+        "id": "stack",
+        "name": "stack",
+        "type": "Array",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false,
+        "items": {
+          "type": "Symbol",
+          "validations": []
+        }
+      },
+      {
+        "id": "links",
+        "name": "links",
+        "type": "Array",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false,
+        "items": {
+          "type": "Symbol",
+          "validations": []
+        }
+      }
+    ],
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "kovonvzjpjzy"
+        }
+      },
+      "id": "personalProjects",
+      "type": "ContentType",
+      "createdAt": "2026-03-09T01:40:06.124Z",
+      "updatedAt": "2026-03-09T01:48:17.768Z",
+      "environment": {
+        "sys": {
+          "id": "master",
+          "type": "Link",
+          "linkType": "Environment"
+        }
+      },
+      "publishedVersion": 7,
+      "publishedAt": "2026-03-09T01:48:17.768Z",
+      "firstPublishedAt": "2026-03-09T01:40:06.853Z",
+      "createdBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "updatedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "publishedCounter": 4,
+      "version": 8,
+      "publishedBy": {
+        "sys": {
+          "type": "Link",
+          "linkType": "User",
+          "id": "032D34hZTgLoejP6vUJJPJ"
+        }
+      },
+      "urn": "crn:contentful:::content:spaces/kovonvzjpjzy/environments/master/content_types/personalProjects"
+    }
+  }
+}
