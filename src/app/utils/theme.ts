@@ -1,10 +1,12 @@
 export const colors = {
-  background: '#FDECC0',
+  primary: '#FDECC0',
   title: '#1A1A1A',
   text: '#5C5C5C',
   auxiliar: '#FF6B6B',
   auxiliarLight: '#FFA69E',
   secondary: '#B7E8D6',
+  background:
+    'linear-gradient(180deg,rgba(255, 255, 255, 1) 0%, rgba(253, 236, 192, 1) 50%)',
 } as const
 
 export const fonts = {

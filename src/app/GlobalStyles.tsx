@@ -4,6 +4,7 @@ import { colors, fonts } from '@/app/utils/theme'
 const GlobalStyles = createGlobalStyle`
   :root {
     /* Colors */
+    --color-primary: ${colors.primary};
     --color-background: ${colors.background};
     --color-title: ${colors.title};
     --color-text: ${colors.text};
@@ -27,13 +28,14 @@ const GlobalStyles = createGlobalStyle`
   html,
   body {
     max-width: 100vw;
+    height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: var(--color-background);
+    background-color: #fff;
     color: var(--color-text);
     font-family: var(--font-general-sans);
   }
