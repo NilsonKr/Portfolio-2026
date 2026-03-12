@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 2rem;
   padding: 4rem;
+  height: 100vh ;
 `
 
 export const GeneralSansText = styled.p`
@@ -63,4 +64,13 @@ export const StyledNoiseBackground = styled.div`
   background-image: url('/noiseBackground.svg');
   background-repeat: repeat;
   z-index: -3;
+`
+
+export const HeroBackgroundContainer = styled.div`
+display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+  height: 100%;
+  border-radius:50% ;
 `
