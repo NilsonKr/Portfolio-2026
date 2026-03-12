@@ -5,6 +5,7 @@ import { StyledBackground, StyledNoiseBackground, HeroBackgroundContainer } from
 import { Wrapper, GeneralSansText, SatoshiText, ZinaText, ArrayText } from './page.style'
 
 import ThreeDemo from './components/ThreeDemo'
+import DotsBackground from './components/DotsBackground'
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <StyledNoiseBackground />
       <StyledBackground />
       <HeroBackgroundContainer>
-        <ThreeDemo />
+        <DotsBackground />
       </HeroBackgroundContainer>
       {/* <GeneralSansText>General Sans — The quick brown fox jumps over the lazy dog</GeneralSansText> */}
       {/* <SatoshiText>Satoshi — The quick brown fox jumps over the lazy dog</SatoshiText> */}

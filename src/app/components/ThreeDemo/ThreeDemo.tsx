@@ -8,15 +8,17 @@ import ThreeCanvas from '@/app/components/ThreeCanvas'
 import { StyledThreeDemo } from './ThreeDemo.style'
 
 // Disc layout
-const MAX_RINGS = 12
-const RING_SPACING = 2
-const DOME_DEPTH = 15
+const MAX_RINGS      = 12
+const BASE_GAP       = 2.8   // spacing for the first rings
+const PLATEAU_RINGS  = 3     // how many rings keep the flat spacing
+const GROWTH_FACTOR  = 1.38  // gap multiplier applied after plateau (per ring)
+const ARC_SPACING    = 2.0   // dot spacing along each ring circumference
+const DOME_DEPTH     = 18
+const RADIAL_JITTER  = 0.18  // random radial offset as fraction of ring gap
+const Z_JITTER       = 10    // max z scatter at outer edge (scales with nd)
 
-// Cycle timing (seconds)
-const FILL_DURATION = 3.5  // scale up center → edge
-const HOLD_DURATION = 1.0  // all dots at peak, pause
-const UNFILL_DURATION = 3.5  // scale down edge → center
-const CYCLE = FILL_DURATION + HOLD_DURATION + UNFILL_DURATION
+// Breath speed — full inhale+exhale cycle in seconds: 2π / BREATH_SPEED
+const BREATH_SPEED = 0.45  // ~14s per cycle
 
 // Dot scales
 const BASE_SCALE = 0.12 // minimum size (always visible)
@@ -44,21 +46,38 @@ const ThreeDemo: React.FC = () => {
       camera.updateProjectionMatrix()
       renderer.setClearColor(0x000000, 0)
 
-      // Concentric rings — ring i has 6*i dots
+      // Build ring radii: flat gap for first PLATEAU_RINGS, then exponential growth
+      const ringRadii: number[] = []
+      let cumRadius = 0
+      for (let i = 1; i <= MAX_RINGS; i++) {
+        const growthSteps = Math.max(0, i - PLATEAU_RINGS)
+        cumRadius += BASE_GAP * Math.pow(GROWTH_FACTOR, growthSteps)
+        ringRadii.push(cumRadius)
+      }
+      const maxRadius = ringRadii[MAX_RINGS - 1]
+
       type DotData = { x: number; y: number; z: number; nd: number }
       const dots: DotData[] = []
-      const maxRadius = MAX_RINGS * RING_SPACING
 
       dots.push({ x: 0, y: 0, z: 0, nd: 0 })
 
-      for (let i = 1; i <= MAX_RINGS; i++) {
-        const r = i * RING_SPACING
-        const nd = r / maxRadius
-        const n = 6 * i
-        const z = -DOME_DEPTH * nd * nd
+      for (let i = 0; i < MAX_RINGS; i++) {
+        const r    = ringRadii[i]
+        const nd   = r / maxRadius
+        const zBase = -DOME_DEPTH * nd * nd
+        const gap  = i === 0 ? BASE_GAP : ringRadii[i] - ringRadii[i - 1]
+        const n    = Math.max(3, Math.round((2 * Math.PI * r) / ARC_SPACING))
         for (let j = 0; j < n; j++) {
-          const angle = (2 * Math.PI * j) / n
-          dots.push({ x: Math.cos(angle) * r, y: Math.sin(angle) * r, z, nd })
+          // Random angle and radial jitter — breaks the perfect ring
+          const angleBase  = (2 * Math.PI * j) / n
+          const angleJitter = (Math.random() - 0.5) * (2 * Math.PI / n) * 0.35
+          const angle      = angleBase + angleJitter
+          const rJitter    = (Math.random() - 0.5) * gap * RADIAL_JITTER
+          const rDot       = Math.max(0, r + rJitter)
+          const ndDot      = rDot / maxRadius
+          // Random z offset layered on dome — creates distinct depth planes
+          const zDot       = zBase + (Math.random() - 0.5) * Z_JITTER * ndDot
+          dots.push({ x: Math.cos(angle) * rDot, y: Math.sin(angle) * rDot, z: zDot, nd: ndDot })
         }
       }
 
@@ -104,15 +123,8 @@ const ThreeDemo: React.FC = () => {
         animId = requestAnimationFrame(animate)
         const t = clock.getElapsedTime()
 
-        const tMod = t % CYCLE
-        let waveR: number
-        if (tMod < FILL_DURATION) {
-          waveR = (tMod / FILL_DURATION) * maxRadius
-        } else if (tMod < FILL_DURATION + HOLD_DURATION) {
-          waveR = maxRadius
-        } else {
-          waveR = maxRadius * (1 - (tMod - FILL_DURATION - HOLD_DURATION) / UNFILL_DURATION)
-        }
+        // Cosine breath: 0 → maxRadius → 0 with natural ease-in/out at both ends
+        const waveR = maxRadius * (0.5 - 0.5 * Math.cos(BREATH_SPEED * t))
 
         for (let i = 0; i < count; i++) {
           const { x, y, z, nd } = dots[i]
@@ -143,8 +155,8 @@ const ThreeDemo: React.FC = () => {
         instancedMesh.instanceMatrix.needsUpdate = true
         instancedMesh.instanceColor!.needsUpdate = true
 
-        const targetX = isHovered ? mouse.x * 4.5 : 0
-        const targetY = isHovered ? mouse.y * 3.0 : 0
+        const targetX = isHovered ? mouse.x * 8.0 : 0
+        const targetY = isHovered ? mouse.y * 6.0 : 0
         camTarget.x += (targetX - camTarget.x) * 0.06
         camTarget.y += (targetY - camTarget.y) * 0.06
         camera.position.x = camTarget.x

@@ -2,10 +2,11 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 2rem;
   padding: 4rem;
   height: 100vh ;
+ justify-content: center;
+ align-items: center;
 `
 
 export const GeneralSansText = styled.p`
@@ -67,10 +68,6 @@ export const StyledNoiseBackground = styled.div`
 `
 
 export const HeroBackgroundContainer = styled.div`
-display: flex;
- justify-content: center;
- align-items: center;
- width: 100%;
-  height: 100%;
   border-radius:50% ;
+ overflow: hidden;
 `
