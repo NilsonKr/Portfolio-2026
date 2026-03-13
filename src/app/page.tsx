@@ -4,7 +4,6 @@ import { StyledBackground, StyledNoiseBackground, HeroBackgroundContainer } from
 
 import { Wrapper, GeneralSansText, SatoshiText, ZinaText, ArrayText } from './page.style'
 
-import ThreeDemo from './components/ThreeDemo'
 import DotsBackground from './components/DotsBackground'
 
 export default function Home() {
