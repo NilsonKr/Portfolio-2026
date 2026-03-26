@@ -19,7 +19,7 @@ const DOME_DEPTH = 40.0
 // Breath animation
 const BREATH_SPEED = 0.9  // radians/s → full cycle ≈ 7 s
 const WAVE_WIDTH = 0.13  // transition band width in normalized-distance units
-const PULSE_BOOST = 1 // extra scale added at peak of pulse
+const PULSE_BOOST = 0.5 // extra scale added at peak of pulse
 
 // Cursor influence
 const CURSOR_RADIUS = 6   // world-space radius around cursor that affects dots
@@ -31,22 +31,17 @@ const TILT_LERP = 0.04    // lerp speed per frame toward target rotation
 
 // Dot appearance
 const BASE_SCALE = 0.1  // minimum rendered scale (always visible baseline)
-const CENTER_SCALE = 0.65 // maximum scale at grid center
+const CENTER_SCALE = 0.45 // maximum scale at grid center
 const FADE_EXPONENT = 1.5   // power curve shaping the size/color falloff
 
 // Project colors
 const BG = { r: 253 / 255, g: 236 / 255, b: 192 / 255 }
-const DOT = { r: 26 / 255, g: 26 / 255, b: 26 / 255 }
+const DOT = { r: 0 / 255, g: 0 / 255, b: 0 / 255 }
 
 type DotsBackgroundProps = {
-  width?: string
-  height?: string
 }
 
-const DotsBackground: React.FC<DotsBackgroundProps> = ({
-  width = '100%',
-  height = '500px',
-}) => {
+const DotsBackground: React.FC<DotsBackgroundProps> = ({ }) => {
   const setup = useCallback(
     ({
       scene,
@@ -112,7 +107,7 @@ const DotsBackground: React.FC<DotsBackgroundProps> = ({
 
       const count = dots.length
       const geometry = new THREE.SphereGeometry(0.5, 10, 10)
-      const material = new THREE.MeshStandardMaterial({ vertexColors: true })
+      const material = new THREE.MeshStandardMaterial()
       const mesh = new THREE.InstancedMesh(geometry, material, count)
       mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage)
       mesh.instanceColor = new THREE.InstancedBufferAttribute(
@@ -254,7 +249,7 @@ const DotsBackground: React.FC<DotsBackgroundProps> = ({
   )
 
   return (
-    <StyledDotsBackground $width={width} $height={height}>
+    <StyledDotsBackground>
       <ThreeCanvas setup={setup} />
     </StyledDotsBackground>
   )

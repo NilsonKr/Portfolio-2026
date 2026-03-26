@@ -1,8 +1,10 @@
 'use client'
 
-import { StyledBackground, StyledNoiseBackground, HeroBackgroundContainer } from './page.style'
+import { Wrapper, HeroTextContainer, StyledBackground, StyledNoiseBackground, HeroBackgroundContainer } from './page.style'
 
-import { Wrapper, GeneralSansText, SatoshiText, ZinaText, ArrayText } from './page.style'
+import TitleComponent from './components/TitleComponent'
+import SubtitleComponent from './components/SubtitleComponent'
+import ParagraphComponent from './components/ParagraphComponent'
 
 import DotsBackground from './components/DotsBackground'
 
@@ -13,6 +15,26 @@ export default function Home() {
       <StyledBackground />
       <HeroBackgroundContainer>
         <DotsBackground />
+        <HeroTextContainer>
+          <TitleComponent fontSize='4.5rem' margin='0 0 10px 0' zIndex={100} textShadow='0px 10px 20px rgba(0, 0, 0, 0.6)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
+            Hi! I'm Nilson Diaz
+          </TitleComponent>
+          <SubtitleComponent color='#404040' textShadow='0px 5px 10px rgba(0, 0, 0, 0.4)'>
+            Frontend / Full-stack engineer
+          </SubtitleComponent>
+          <ParagraphComponent fontSize='1.5rem' color='#000' fontWeight='800' margin='45px 0 10px'>
+            5 years of <span style={{
+              background: 'radial-gradient( circle farthest-corner at 32.7% 82.7%,  rgba(173,0,171,1) 8.3%, rgba(15,51,92,1) 79.4% )',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>
+              professional experience
+            </span>
+          </ParagraphComponent>
+          <ParagraphComponent color='#404040' fontSize='1.25rem' textShadow='0px 5px 10px rgba(0, 0, 0, 0.5)'>
+            Building scalable, high-performance, world-class UI/UX products
+          </ParagraphComponent>
+        </HeroTextContainer>
       </HeroBackgroundContainer>
       {/* <GeneralSansText>General Sans — The quick brown fox jumps over the lazy dog</GeneralSansText> */}
       {/* <SatoshiText>Satoshi — The quick brown fox jumps over the lazy dog</SatoshiText> */}
