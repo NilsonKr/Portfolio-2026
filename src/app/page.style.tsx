@@ -2,9 +2,11 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 2rem;
   padding: 4rem;
+  height: 100vh ;
+ justify-content: center;
+ align-items: center;
 `
 
 export const GeneralSansText = styled.p`
@@ -63,4 +65,9 @@ export const StyledNoiseBackground = styled.div`
   background-image: url('/noiseBackground.svg');
   background-repeat: repeat;
   z-index: -3;
+`
+
+export const HeroBackgroundContainer = styled.div`
+  border-radius:50% ;
+ overflow: hidden;
 `
