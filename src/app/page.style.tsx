@@ -5,10 +5,9 @@ import TagComponent from './components/TagComponent'
 export const Wrapper = styled.div`
   display: flex;
   gap: 2rem;
-  padding: 4rem;
   height: 100vh ;
- justify-content: center;
- align-items: center;
+   justify-content: center;
+  align-items: center;
 `
 
 export const GeneralSansText = styled.p`

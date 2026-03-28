@@ -1,24 +1,28 @@
 'use client'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 import { Wrapper, HeroTextContainer, StyledBackground, StyledNoiseBackground, HeroBackgroundContainer, TagHeroComponent } from './page.style'
 
+import NavbarHero from './components/layout/HeroHeader'
+import HeroFooter from './components/layout/HeroFooter'
 import TitleComponent from './components/TitleComponent'
 import SubtitleComponent from './components/SubtitleComponent'
 import ParagraphComponent from './components/ParagraphComponent'
-import TagComponent from './components/TagComponent'
 import GlowBackground from './components/GlowBackground'
-import FlexContainer from './components/FlexContainer'
-import GlassContainer from './components/GlassContainer'
+
 
 import DotsBackground from './components/DotsBackground'
 
 export default function Home() {
-  return (
+  return (<>
+    <NavbarHero />
+
     <Wrapper>
       <StyledNoiseBackground />
       <StyledBackground />
+      <DotsBackground />
+
       <HeroBackgroundContainer>
-        <DotsBackground />
         <HeroTextContainer>
           <TitleComponent fontSize='4.5rem' zIndex={100} textShadow='0px 10px 20px rgba(0, 0, 0, 0.6)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
             Hi! I'm Nilson Diaz
@@ -50,7 +54,6 @@ export default function Home() {
               TypeScript - React.js - Figma - Next.js - Node.js - Web3 Python - SQL - Claude Code
             </TagHeroComponent>
           </GlowBackground>
-          {/* <GlassContainer /> */}
         </HeroTextContainer>
       </HeroBackgroundContainer>
       {/* <GeneralSansText>General Sans — The quick brown fox jumps over the lazy dog</GeneralSansText> */}
@@ -59,5 +62,7 @@ export default function Home() {
       {/* <ArrayText>Array — The quick brown fox jumps over the lazy dog</ArrayText> */}
       {/* <GlassContainer width='300px' height='100px' padding='1rem' margin='1rem'></GlassContainer> */}
     </Wrapper>
+    <HeroFooter />
+  </>
   )
 }

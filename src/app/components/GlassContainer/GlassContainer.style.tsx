@@ -1,9 +1,29 @@
 import styled, { css } from 'styled-components'
 import { GlassContainerProps } from './GlassContainer'
 
-type StyledProps = Omit<GlassContainerProps, 'children'>
+type StyledProps = {
+  width?: string
+  height?: string
+  minWidth?: string
+  minHeight?: string
+  maxWidth?: string
+  maxHeight?: string
+  padding?: string
+  margin?: string
+  $borderRadius?: string
+  blur?: string
+  shadowSize?: number
+  className?: string
+  id?: string
+  as?: React.ElementType
+  $cursor?: string
+}
 
 export const StyledGlassContainer = styled.div<StyledProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: ${({ $cursor }) => ($cursor ?? 'default')};
   /* Dimensions */
   width: ${({ width }) => (width ?? 'auto')};
   height: ${({ height }) => (height ?? 'auto')};
@@ -13,11 +33,11 @@ export const StyledGlassContainer = styled.div<StyledProps>`
   max-height: ${({ maxHeight }) => (maxHeight ?? 'unset')};
 
   /* Spacing */
-  padding: ${({ padding }) => (padding ?? '1.5rem')};
+  padding: ${({ padding }) => (padding ?? '0.8rem')};
   margin: ${({ margin }) => (margin ?? '0')};
 
   /* Border */
-  border-radius: ${({ borderRadius }) => (borderRadius ?? '1.25rem')};
+  border-radius: ${({ $borderRadius }) => ($borderRadius ?? '1.25rem')};
 
   /* Liquid glass base */
   background: linear-gradient(
@@ -38,15 +58,15 @@ export const StyledGlassContainer = styled.div<StyledProps>`
   box-shadow:
     /* Outer shadow — depth */
     ${({ shadowSize }) => {
-      const s = shadowSize ?? 1
-      return css`
+    const s = shadowSize ?? 1
+    return css`
         0 ${8 * s}px ${32 * s}px rgba(0, 0, 0, ${0.12 * s}),
         /* Inner highlight — top-left glass shine */
         inset 0 1px 1px rgba(255, 255, 255, 0.55),
         /* Inner shadow — bottom-right depth */
         inset 0 -1px 1px rgba(0, 0, 0, 0.08)
       `
-    }};
+  }};
 
   /* Liquid surface highlight overlay */
   position: relative;
