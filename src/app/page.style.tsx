@@ -98,7 +98,7 @@ export const HeroTextContainer = styled.div`
 `
 
 const colorCycle = keyframes`
-  0%   { color: #851ea4; }
+  0%   { color: #000; }
   25%  { color: #cd2486; }
   50%  { color: #268eae; }
   75%  { color: #35b091; }
@@ -106,5 +106,5 @@ const colorCycle = keyframes`
 `
 
 export const TagHeroComponent = styled(TagComponent)`
-  animation: ${colorCycle} 10s linear infinite;
+  animation: ${colorCycle} 60s ease-out infinite;
 `

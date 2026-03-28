@@ -8,6 +8,7 @@ import ParagraphComponent from './components/ParagraphComponent'
 import TagComponent from './components/TagComponent'
 import GlowBackground from './components/GlowBackground'
 import FlexContainer from './components/FlexContainer'
+import GlassContainer from './components/GlassContainer'
 
 import DotsBackground from './components/DotsBackground'
 
@@ -22,7 +23,7 @@ export default function Home() {
           <TitleComponent fontSize='4.5rem' zIndex={100} textShadow='0px 10px 20px rgba(0, 0, 0, 0.6)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
             Hi! I'm Nilson Diaz
           </TitleComponent>
-          <SubtitleComponent margin='20px 0 0' color='#404040' textShadow='0px 5px 10px rgba(0, 0, 0, 0.4)'>
+          <SubtitleComponent color='#404040' textShadow='0px 5px 10px rgba(0, 0, 0, 0.2)'>
             Frontend / Full-stack engineer
           </SubtitleComponent>
           <ParagraphComponent fontSize='1.5rem' color='#000' fontWeight='800' margin='30px 0 0'>
@@ -34,7 +35,7 @@ export default function Home() {
               professional experience
             </span>
           </ParagraphComponent>
-          <ParagraphComponent color='#404040' fontSize='1.1rem' margin='30px 0 10px' textShadow='0px 5px 10px rgba(0, 0, 0, 0.5)'>
+          <ParagraphComponent color='#404040' fontSize='1.1rem' margin='30px 0 0' textShadow='0px 5px 8px rgba(0, 0, 0, 0.21)'>
             Building scalable, high-performance, world-class UI/UX products
           </ParagraphComponent>
           <GlowBackground >
@@ -49,6 +50,7 @@ export default function Home() {
               TypeScript - React.js - Figma - Next.js - Node.js - Web3 Python - SQL - Claude Code
             </TagHeroComponent>
           </GlowBackground>
+          {/* <GlassContainer /> */}
         </HeroTextContainer>
       </HeroBackgroundContainer>
       {/* <GeneralSansText>General Sans — The quick brown fox jumps over the lazy dog</GeneralSansText> */}

@@ -52,6 +52,12 @@ export const StyledGlassContainer = styled.div<StyledProps>`
   position: relative;
   overflow: hidden;
 
+  /* Lift children above the Three.js canvas */
+  > *:not(canvas) {
+    position: relative;
+    z-index: 1;
+  }
+
   /* Specular highlight layer */
   &::before {
     content: '';
@@ -65,6 +71,7 @@ export const StyledGlassContainer = styled.div<StyledProps>`
       rgba(255, 255, 255, 0.06) 100%
     );
     pointer-events: none;
+    z-index: 2;
   }
 
   /* Edge refraction shimmer */
@@ -79,5 +86,6 @@ export const StyledGlassContainer = styled.div<StyledProps>`
       transparent 60%
     );
     pointer-events: none;
+    z-index: 2;
   }
 `
