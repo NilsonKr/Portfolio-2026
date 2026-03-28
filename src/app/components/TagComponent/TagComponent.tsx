@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { StyledParagraph } from './ParagraphComponent.style'
+import { StyledTag } from './TagComponent.style'
 
-export type ParagraphComponentProps = {
+export type TagComponentProps = {
   children: React.ReactNode
   fontSize?: string
   fontWeight?: number | string
@@ -20,7 +20,7 @@ export type ParagraphComponentProps = {
   as?: React.ElementType
 }
 
-const ParagraphComponent: React.FC<ParagraphComponentProps> = ({
+const TagComponent: React.FC<TagComponentProps> = ({
   fontSize,
   fontWeight,
   color,
@@ -38,7 +38,7 @@ const ParagraphComponent: React.FC<ParagraphComponentProps> = ({
   children
 }) => {
   return (
-    <StyledParagraph
+    <StyledTag
       $fontSize={fontSize}
       $fontWeight={fontWeight}
       $color={color}
@@ -55,8 +55,8 @@ const ParagraphComponent: React.FC<ParagraphComponentProps> = ({
       as={as}
     >
       {children}
-    </StyledParagraph>
+    </StyledTag>
   )
 }
 
-export default ParagraphComponent
+export default TagComponent

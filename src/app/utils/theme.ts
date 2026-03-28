@@ -12,7 +12,7 @@ export const colors = {
 export const fonts = {
   generalSans: "'General Sans', sans-serif",
   satoshi: "'Satoshi', sans-serif",
-  zina: "'Zina', serif",
+  nippo: "'Nippo', serif",
   array: "'Array', sans-serif",
 } as const
 

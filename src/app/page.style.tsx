@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+import TagComponent from './components/TagComponent'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -93,4 +95,16 @@ export const HeroTextContainer = styled.div`
   );
   mask-composite: intersect;
   -webkit-mask-composite: destination-in;
+`
+
+const colorCycle = keyframes`
+  0%   { color: #851ea4; }
+  25%  { color: #cd2486; }
+  50%  { color: #268eae; }
+  75%  { color: #35b091; }
+  100%   { color: #851ea4; }
+`
+
+export const TagHeroComponent = styled(TagComponent)`
+  animation: ${colorCycle} 10s linear infinite;
 `

@@ -13,7 +13,7 @@ type StyledProps = {
 
 export const StyledSubtitle = styled.p<StyledProps>`
   font-family: 'Satoshi', sans-serif;
-  font-size: ${({ $fontSize }) => $fontSize ?? '3rem'};
+  font-size: ${({ $fontSize }) => $fontSize ?? '2.5rem'};
   font-weight: ${({ $fontWeight }) => $fontWeight ?? 600};
   color: ${({ $color }) => $color ?? 'var(--color-title)'};
   margin: ${({ $margin }) => $margin ?? '0'};

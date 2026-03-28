@@ -14,10 +14,10 @@ type StyledProps = {
   $textAlign?: string
 }
 
-export const StyledParagraph = styled.p<StyledProps>`
-  font-family: 'Satoshi', sans-serif;
+export const StyledTag = styled.span<StyledProps>`
+  font-family: var(--font-array);
   font-size: ${({ $fontSize }) => $fontSize ?? '1rem'};
-  font-weight: ${({ $fontWeight }) => $fontWeight ?? 500};
+  font-weight: ${({ $fontWeight }) => $fontWeight ?? 400};
   color: ${({ $color }) => $color ?? 'var(--color-text)'};
   margin: ${({ $margin }) => $margin ?? '0'};
   line-height: ${({ $lineHeight }) => $lineHeight ?? '1.6'};

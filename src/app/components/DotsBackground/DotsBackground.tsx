@@ -30,8 +30,8 @@ const MAX_TILT = 0.2   // max rotation in radians (~10°)
 const TILT_LERP = 0.04    // lerp speed per frame toward target rotation
 
 // Dot appearance
-const BASE_SCALE = 0.1  // minimum rendered scale (always visible baseline)
-const CENTER_SCALE = 0.45 // maximum scale at grid center
+const BASE_SCALE = 0.07  // minimum rendered scale (always visible baseline)
+const CENTER_SCALE = 0.35 // maximum scale at grid center
 const FADE_EXPONENT = 1.5   // power curve shaping the size/color falloff
 
 // Project colors
