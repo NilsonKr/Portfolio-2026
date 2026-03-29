@@ -99,9 +99,10 @@ export const HeroTextContainer = styled.div`
 const colorCycle = keyframes`
   0%   { color: #000; }
   25%  { color: #cd2486; }
-  50%  { color: #268eae; }
-  75%  { color: #35b091; }
-  100%   { color: #851ea4; }
+  50%  { color: #23768f; }
+  75%  { color: #2d997e; }
+  100%   { color: #4e0763; }
+  120%   { color: #000; }
 `
 
 export const TagHeroComponent = styled(TagComponent)`

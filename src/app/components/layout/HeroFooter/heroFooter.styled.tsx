@@ -6,8 +6,7 @@ export const StyledContainer = styled(FlexContainer)`
   position: absolute;
   bottom: 20px;
   width: 100%;
-  cursor: pointer;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.2s ease-in-out;
 
   &:hover {
     opacity: 0;

@@ -133,6 +133,12 @@ const DotsBackground: React.FC<DotsBackgroundProps> = ({ }) => {
         const ndcX = ((e.clientX - rect.left) / rect.width) * 2 - 1
         const ndcY = -((e.clientY - rect.top) / rect.height) * 2 + 1
 
+        // Ignore events outside the canvas bounds
+        if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+          onMouseLeave()
+          return
+        }
+
         // Unproject NDC onto the z=0 plane for dot-boost effect
         _unproject.set(ndcX, ndcY, 0.5).unproject(camera)
         const dir = _unproject.sub(camera.position).normalize()
@@ -152,8 +158,8 @@ const DotsBackground: React.FC<DotsBackgroundProps> = ({ }) => {
         tiltTarget.y = 0
       }
 
-      renderer.domElement.addEventListener('mousemove', onMouseMove)
-      renderer.domElement.addEventListener('mouseleave', onMouseLeave)
+      window.addEventListener('mousemove', onMouseMove)
+      window.addEventListener('mouseleave', onMouseLeave)
 
       const dummy = new THREE.Object3D()
       const clock = new THREE.Clock()
@@ -239,8 +245,8 @@ const DotsBackground: React.FC<DotsBackgroundProps> = ({ }) => {
 
       return () => {
         cancelAnimationFrame(animId)
-        renderer.domElement.removeEventListener('mousemove', onMouseMove)
-        renderer.domElement.removeEventListener('mouseleave', onMouseLeave)
+        window.removeEventListener('mousemove', onMouseMove)
+        window.removeEventListener('mouseleave', onMouseLeave)
         geometry.dispose()
         material.dispose()
       }
