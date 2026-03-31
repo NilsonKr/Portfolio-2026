@@ -4,6 +4,7 @@ import FlexContainer from "../../FlexContainer";
 
 export const StyledContainer = styled(FlexContainer)`
   position: absolute;
+  top: 0;
   padding: 20px;
   width: 100%;
   z-index: 1;

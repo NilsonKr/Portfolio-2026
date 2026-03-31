@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import TagComponent from './components/TagComponent'
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   gap: 2rem;
   height: 100vh ;

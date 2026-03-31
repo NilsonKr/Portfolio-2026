@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 import { Wrapper, HeroTextContainer, StyledBackground, StyledNoiseBackground, HeroBackgroundContainer, TagHeroComponent } from './page.style'
 
-import NavbarHero from './components/layout/HeroHeader'
+import HeroHeader from './components/layout/HeroHeader'
 import HeroFooter from './components/layout/HeroFooter'
 import TitleComponent from './components/TitleComponent'
 import SubtitleComponent from './components/SubtitleComponent'
@@ -11,13 +11,16 @@ import ParagraphComponent from './components/ParagraphComponent'
 import GlowBackground from './components/GlowBackground'
 
 
+import Experiences from './components/layout/Experiences'
+
+
 import DotsBackground from './components/DotsBackground'
 
 export default function Home() {
   return (<>
-    <NavbarHero />
 
     <Wrapper>
+      <HeroHeader />
       <StyledNoiseBackground />
       <StyledBackground />
       <DotsBackground />
@@ -56,13 +59,10 @@ export default function Home() {
           </GlowBackground>
         </HeroTextContainer>
       </HeroBackgroundContainer>
-      {/* <GeneralSansText>General Sans — The quick brown fox jumps over the lazy dog</GeneralSansText> */}
-      {/* <SatoshiText>Satoshi — The quick brown fox jumps over the lazy dog</SatoshiText> */}
-      {/* <ZinaText>Zina — The quick brown fox jumps over the lazy dog</ZinaText> */}
-      {/* <ArrayText>Array — The quick brown fox jumps over the lazy dog</ArrayText> */}
-      {/* <GlassContainer width='300px' height='100px' padding='1rem' margin='1rem'></GlassContainer> */}
+      <HeroFooter />
     </Wrapper>
-    <HeroFooter />
+
+    <Experiences />
   </>
   )
 }
