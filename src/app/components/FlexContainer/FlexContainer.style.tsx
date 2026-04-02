@@ -17,6 +17,7 @@ type StyledProps = {
   $background?: string
   $textAlign?: string
   $flex?: string
+  $fontSize?: string
   $position?: string
   $zIndex?: number
   $overflow?: string
@@ -40,6 +41,7 @@ export const StyledFlex = styled.div<StyledProps>`
   background: ${({ $background }) => $background ?? 'transparent'};
   text-align: ${({ $textAlign }) => $textAlign ?? 'unset'};
   flex: ${({ $flex }) => $flex ?? 'unset'};
+  font-size: ${({ $fontSize }) => $fontSize ?? 'inherit'};
   position: ${({ $position }) => $position ?? 'static'};
   z-index: ${({ $zIndex }) => $zIndex ?? 'auto'};
   overflow: ${({ $overflow }) => $overflow ?? 'visible'};

@@ -22,6 +22,7 @@ export type FlexContainerProps = {
   flex?: string
   position?: string
   zIndex?: number
+  fontSize?: string
   overflow?: string
   className?: string
   id?: string
@@ -46,6 +47,7 @@ const FlexContainer: React.FC<FlexContainerProps> = ({
   background,
   textAlign,
   flex,
+  fontSize,
   position,
   zIndex,
   overflow,
@@ -71,6 +73,7 @@ const FlexContainer: React.FC<FlexContainerProps> = ({
       $background={background}
       $textAlign={textAlign}
       $flex={flex}
+      $fontSize={fontSize}
       $position={position}
       $zIndex={zIndex}
       $overflow={overflow}
