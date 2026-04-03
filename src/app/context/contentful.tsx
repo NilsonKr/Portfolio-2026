@@ -53,11 +53,6 @@ const ContentfulProvider: React.FC<ContentfulProviderProps> = ({ children }) => 
     fetchAll()
   }, [])
 
-  console.log(aboutMe)
-  console.log(experiences)
-  console.log(personalProjects)
-
-
   return (
     <ContentfulContext.Provider value={{ aboutMe, experiences, personalProjects, loading }}>
       {children}

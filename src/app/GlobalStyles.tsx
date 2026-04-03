@@ -28,8 +28,8 @@ const GlobalStyles = createGlobalStyle`
   html,
   body {
     max-width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
+    min-height: 100vh;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

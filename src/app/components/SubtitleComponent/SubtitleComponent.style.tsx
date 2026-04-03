@@ -11,7 +11,7 @@ type StyledProps = {
   $textShadow?: string
 }
 
-export const StyledSubtitle = styled.p<StyledProps>`
+export const StyledSubtitle = styled.h2<StyledProps>`
   font-family: 'Satoshi', sans-serif;
   font-size: ${({ $fontSize }) => $fontSize ?? '2.5rem'};
   font-weight: ${({ $fontWeight }) => $fontWeight ?? 600};
