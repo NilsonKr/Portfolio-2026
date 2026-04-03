@@ -22,6 +22,7 @@ export const StyledTitleWrapper = styled.div`
 `
 
 export const StyledExperiencesList = styled.div`
+  perspective: 1200px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   place-items: center;
