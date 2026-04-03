@@ -1,44 +1,45 @@
 'use client'
 
-import React, { RefObject } from 'react'
+import React from 'react'
 
-import { MotionValue, motion, useScroll, useTransform } from 'motion/react'
+import { MotionValue, motion, useTransform } from 'motion/react'
 
 import { ExperienceData } from '@/app/types/data'
 
 type WithAnimationProps = {
   data: ExperienceData
   main?: boolean
-  containerRef: RefObject<HTMLDivElement | null>
+  scrollYProgress: MotionValue<number>
+}
+
+const mainTriggers = {
+  y: [0.15, 0.35] as const,
+  yValues: [130, 40] as const,
+  rotateY: [0.15, 0.35] as const,
+  rotateYValues: [-45, 0] as const,
+  opacity: [0.15, 0.35] as const,
+  opacityValues: [0, 1] as const,
+}
+
+const altTriggers = {
+  y: [0.55, 0.75] as const,
+  yValues: [130, 60] as const,
+  opacity: [0.55, 0.75] as const,
+  opacityValues: [0, 1] as const,
+  rotateY: [0, 0] as const,
+  rotateYValues: [0, 0] as const,
 }
 
 function withExperienceItemAnimation<T extends { data: ExperienceData; main?: boolean }>(
   WrappedComponent: React.ComponentType<T & { scrollYProgress: MotionValue<number> }>,
   isMain: boolean
 ) {
-  const ExperienceItemAnimated = ({ containerRef, ...props }: T & WithAnimationProps) => {
-    const { scrollYProgress } = useScroll({
-      target: containerRef,
-      offset: ['25% end', 'end end'],
-    })
-
-    const mainTriggers = {
-      y: [[0.15, 0.35], [130, 40]],
-      rotateY: [[0.15, 0.35], [-45, 0]],
-      opacity: [[0.15, 0.35], [0, 1]],
-    }
-
-    const altTriggers = {
-      y: [[0.55, 0.75], [130, 60]],
-      rotateY: [[0, 0], [0, 0]],
-      opacity: [[0.55, 0.75], [0, 1]],
-    }
-
+  const ExperienceItemAnimated = ({ scrollYProgress, ...props }: T & WithAnimationProps) => {
     const triggers = isMain ? mainTriggers : altTriggers
 
-    const y = useTransform(scrollYProgress, [...triggers.y[0]], [...triggers.y[1]])
-    const rotateY = useTransform(scrollYProgress, [...triggers.rotateY[0]], [...triggers.rotateY[1]])
-    const opacity = useTransform(scrollYProgress, [...triggers.opacity[0]], [...triggers.opacity[1]])
+    const y = useTransform(scrollYProgress, [...triggers.y], [...triggers.yValues])
+    const opacity = useTransform(scrollYProgress, [...triggers.opacity], [...triggers.opacityValues])
+    const rotateY = useTransform(scrollYProgress, [...triggers.rotateY], [...triggers.rotateYValues])
 
     const animatedStyles = isMain ? { y, rotateY, opacity } : { y, opacity }
 

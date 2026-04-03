@@ -1,6 +1,8 @@
 'use client'
 
-import { useRef, useContext, JSX } from 'react'
+import { useRef, useContext } from 'react'
+
+import { useScroll } from 'motion/react'
 
 import { StyledExperiencesContainer, StyledStickyContainer, StyledTitleWrapper, StyledExperiencesList } from "./experiences.styled"
 
@@ -13,21 +15,19 @@ import withExperienceItemAnimationHOC from '../../HOC/ExperienceItemAnimated'
 
 import TitleComponent from "../../TitleComponent"
 import ExperienceItem from './ExperienceItem'
-import FlexContainer from '../../FlexContainer'
 
 const TitleAnimated = withExperiencesTitleAnimationHOC(TitleComponent)
-
+const ExperienceItemAnimatedMain = withExperienceItemAnimationHOC(ExperienceItem, true)
+const ExperienceItemAnimatedAlt = withExperienceItemAnimationHOC(ExperienceItem, false)
 
 const Experiences = () => {
   const { experiences } = useContext(ContentfulContext)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const getExperienceItemAnimated = (isMain: boolean) => {
-    const ExperienceItemAnimated = withExperienceItemAnimationHOC(ExperienceItem, isMain)
-
-
-    return ExperienceItemAnimated
-  }
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['25% end', 'end end'],
+  })
 
   return (
     <StyledExperiencesContainer ref={containerRef}>
@@ -37,12 +37,12 @@ const Experiences = () => {
             Professional Experience
           </TitleAnimated>
         </StyledTitleWrapper>
-        <StyledExperiencesList >
+        <StyledExperiencesList>
           {!!experiences.length && experiences.map(exp => {
             const isMain = exp.fields.id == 1
-            const ExperienceItemAnimated = getExperienceItemAnimated(isMain)
+            const ExperienceItemAnimated = isMain ? ExperienceItemAnimatedMain : ExperienceItemAnimatedAlt
 
-            return <ExperienceItemAnimated key={exp.fields.id as number} containerRef={containerRef} main={isMain} data={exp.fields as ExperienceData} />
+            return <ExperienceItemAnimated key={exp.fields.id as number} scrollYProgress={scrollYProgress} main={isMain} data={exp.fields as ExperienceData} />
           })}
         </StyledExperiencesList>
       </StyledStickyContainer>
