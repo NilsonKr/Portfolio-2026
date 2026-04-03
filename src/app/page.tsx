@@ -12,7 +12,7 @@ import GlowBackground from './components/GlowBackground'
 
 
 import Experiences from './components/layout/Experiences'
-
+import PersonalProjects from './components/layout/Projects'
 
 import DotsBackground from './components/DotsBackground'
 
@@ -63,6 +63,8 @@ export default function Home() {
     </Wrapper>
 
     <Experiences />
+
+    <PersonalProjects />
   </>
   )
 }
