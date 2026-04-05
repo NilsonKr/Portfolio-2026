@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledContainer = styled.div`
-  max-width: 550px;
+export const StyledContainer = styled.div<{ background: string }>`
+  height: 100%;
+  background: ${({ background }) => background};
 `

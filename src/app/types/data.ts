@@ -18,4 +18,5 @@ export type PersonalProjectData = {
   description?: string
   stack?: string[]
   links?: string[]
+  color?: string
 }

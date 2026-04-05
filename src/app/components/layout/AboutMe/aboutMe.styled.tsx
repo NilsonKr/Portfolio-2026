@@ -1,16 +1,13 @@
 import styled from 'styled-components'
 
-export const StyledProjectsContainer = styled.div`
+export const StyledAboutMeContainer = styled.div`
   width: 100%;
-  padding-top: 50px;
-  min-height: 600vh;
+  min-height: 300vh;
 `
 
 export const StyledStickyContainer = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: 100%;
   height: 100vh;
   overflow: hidden;
-  z-index: 10;
 `

@@ -1,5 +1,6 @@
 'use client'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { useRef } from 'react'
+import { useScroll } from 'motion/react'
 
 import { Wrapper, HeroTextContainer, StyledBackground, StyledNoiseBackground, HeroBackgroundContainer, TagHeroComponent } from './page.style'
 
@@ -13,10 +14,17 @@ import GlowBackground from './components/GlowBackground'
 
 import Experiences from './components/layout/Experiences'
 import PersonalProjects from './components/layout/Projects'
+import AboutMe from './components/layout/AboutMe'
 
 import DotsBackground from './components/DotsBackground'
 
 export default function Home() {
+  const aboutMeRef = useRef(null)
+  const { scrollYProgress: aboutMeScrollYProgress } = useScroll({
+    target: aboutMeRef,
+    offset: ['start end', 'end end'],
+  })
+
   return (<>
 
     <Wrapper>
@@ -64,7 +72,9 @@ export default function Home() {
 
     <Experiences />
 
-    <PersonalProjects />
+    <PersonalProjects aboutMeScrollYProgress={aboutMeScrollYProgress} />
+
+    <AboutMe containerRef={aboutMeRef} />
   </>
   )
 }
