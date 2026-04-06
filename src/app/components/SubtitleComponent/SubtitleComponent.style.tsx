@@ -9,6 +9,7 @@ type StyledProps = {
   $margin?: string
   $zIndex?: number
   $textShadow?: string
+  $gradient?: string
 }
 
 export const StyledSubtitle = styled.h2<StyledProps>`
@@ -21,4 +22,10 @@ export const StyledSubtitle = styled.h2<StyledProps>`
   letter-spacing: ${({ $letterSpacing }) => $letterSpacing ?? 'normal'};
   z-index: ${({ $zIndex }) => $zIndex ?? 1};
   text-shadow: ${({ $textShadow }) => $textShadow ?? 'unset'};
+  ${({ $gradient }) => $gradient && `
+    background: ${$gradient};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  `}
 `

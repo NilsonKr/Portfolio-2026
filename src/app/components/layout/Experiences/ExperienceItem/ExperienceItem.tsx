@@ -1,6 +1,6 @@
 import { MotionValue } from 'motion/react'
 
-import { StyledContainer } from './experienceItem.styled'
+import { StyledContainer, StyledYear, StyledDateRangeContainer, StyledOrbBackground } from './experienceItem.styled'
 import { StyledAnimatedTechStack, AnimatedDateRange } from './experienceItem.animate'
 
 import SubtitleComponent from '@/app/components/SubtitleComponent'
@@ -15,43 +15,55 @@ type ComponentProps = {
   scrollYProgress?: MotionValue<number>
 }
 
+const glowBackgrounds = {
+  1: `radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(248, 180, 244, 1) 0%,
+    rgba(169, 219, 237, 1) 90%
+  )`,
+  2: `radial-gradient( circle farthest-corner at 10% 20%,  rgba(240,139,139,1) 0%, rgba(243,252,166,1) 90% )`,
+  3: `radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(143,232,255,0.6) 21.9%, rgba(209,243,251,0.6) 52.9% )`,
+}
+
 const ExperienceItem: React.FC<ComponentProps> = ({ data, main, scrollYProgress }) => {
   const { id, company, role, description, beginDate, endDate, stack } = data
 
   const fromDate = new Date(beginDate as string)
   const toDate = new Date(endDate as string)
 
-  const fromDateDisplay = `${fromDate.toLocaleDateString('en-US', {
+  const [fromDateMonth, fromDateYear] = `${fromDate.toLocaleDateString('en-US', {
     month: 'long',
     year: 'numeric',
-  })}`
-  const toDateDisplay = `${toDate.toLocaleDateString('en-US', {
+  })}`.split(' ')
+  const [toDateMonth, toDateDisplay] = `${toDate.toLocaleDateString('en-US', {
     month: 'long',
     year: 'numeric',
-  })}`
+  })}`.split(' ')
 
   return (
     <StyledContainer>
-      <FlexContainer justify='space-between' align='center' padding='0 30px 0 0'>
-        <SubtitleComponent fontSize={main ? '2rem' : '1.8rem'} >
-          {company}
-        </SubtitleComponent>
-
-        <AnimatedDateRange main={main} scrollYProgress={scrollYProgress as MotionValue<number>} fontSize='0.85rem' fontWeight={800} textShadow='0 2px 3px rgba(0,0,0,0.2)'>
-          {`${fromDateDisplay} - ${toDateDisplay}`}
-        </AnimatedDateRange>
-      </FlexContainer>
+      <StyledOrbBackground background={glowBackgrounds[id as keyof typeof glowBackgrounds]} />
 
 
-      <SubtitleComponent fontSize={main ? '1.6rem' : '1.3rem'} fontWeight={600} color='var(--text-color)'>
+      <StyledDateRangeContainer>
+        <ParagraphComponent lineHeight='1'>
+          {toDateMonth} <StyledYear style={{ color: '#000' }}>{toDateDisplay} - </StyledYear>
+        </ParagraphComponent>
+        <ParagraphComponent lineHeight='1' >
+          {fromDateMonth} <StyledYear style={{ fontSize: '1.5rem' }}> {fromDateYear}</StyledYear>
+        </ParagraphComponent>
+      </StyledDateRangeContainer>
+
+      <SubtitleComponent fontSize='2rem' fontWeight={600} margin='0 0 10px 0' gradient={main ? 'radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 35% )' : ''}>
         {role}
       </SubtitleComponent>
 
-      <StyledAnimatedTechStack scrollYProgress={scrollYProgress as MotionValue<number>} fontSize={main ? '1.18rem' : '1rem'} background={main ? 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% )' : 'radial-gradient( circle farthest-corner at 32.7% 82.7%, #780076 8.3%, #22093d 79.4% )'}>
-        {stack?.join(' ')}
-      </StyledAnimatedTechStack>
+      <SubtitleComponent fontSize='1.6rem' color='var(--text-color)' >
+        {company}
+      </SubtitleComponent>
 
-      <ParagraphComponent fontSize='0.9rem' fontWeight={500} margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>
+
+      <ParagraphComponent fontSize='0.9rem' maxWidth='90%' margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>
         {description}
       </ParagraphComponent>
     </StyledContainer>

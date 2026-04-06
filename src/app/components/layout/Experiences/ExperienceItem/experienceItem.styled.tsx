@@ -1,31 +1,40 @@
 import styled from 'styled-components'
 
-type StyledContainerProps = {
-  altSide?: boolean
+type StyledProps = {
+  main?: boolean
 }
 
 
-export const StyledContainer = styled.div<StyledContainerProps>`
-  ${({ altSide }) => altSide ? `right: 0;` : `left: 0;`}
-  max-width: 550px;
-
-
+export const StyledContainer = styled.div<StyledProps>`
+  position: relative;
+  max-width: 350px;
 `
 
-export const StyledTechStack = styled.p<{ background: string }>`
-  margin-top: 10px;
-  font-family: var(--font-array);
-  word-spacing: 0.6em;
-  white-space: normal;
-  word-break: break-word;
-  background: ${({ background }) => background};
-  background-clip: text;
-  filter:
-    drop-shadow(0 0 4px rgba(214, 137, 248, 0.3))
-    drop-shadow(0 0 12px rgba(214, 137, 248, 0.3))
-    drop-shadow(0 0 24px rgba(246, 228, 193, 0.3))
-    drop-shadow(0 0 48px rgba(246, 228, 193, 0.3));
+export const StyledYear = styled.span<StyledProps>`
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--font-general-sans);
+  margin-left: 5px;
+`
 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+export const StyledDateRangeContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 30px;
+`
+
+export const StyledOrbBackground = styled.div<{ background: string }>`
+  position: absolute;
+  top: 120px;
+  left: 50px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background-image: ${({ background }) => background};
+  filter: blur(48px);
+  opacity: 0.3;
+  z-index: -1;
 `

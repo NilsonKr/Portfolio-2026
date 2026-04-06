@@ -11,6 +11,7 @@ export type SubtitleComponentProps = {
   letterSpacing?: string
   margin?: string
   textShadow?: string
+  gradient?: string
   className?: string
   zIndex?: number
   id?: string
@@ -26,6 +27,7 @@ const SubtitleComponent: React.FC<SubtitleComponentProps> = ({
   margin,
   zIndex,
   textShadow,
+  gradient,
   className,
   id,
   as,
@@ -41,6 +43,7 @@ const SubtitleComponent: React.FC<SubtitleComponentProps> = ({
       $zIndex={zIndex}
       $margin={margin}
       $textShadow={textShadow}
+      $gradient={gradient}
       className={className}
       id={id}
       as={as}

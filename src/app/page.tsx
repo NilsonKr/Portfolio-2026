@@ -27,13 +27,14 @@ export default function Home() {
   return (<>
 
     <Wrapper>
-      <HeroHeader />
-      <StyledNoiseBackground />
       <StyledBackground />
-      <DotsBackground />
+      <StyledNoiseBackground />
 
+      <HeroHeader />
+      <DotsBackground />
       <Hero />
       <HeroFooter />
+
     </Wrapper>
 
     <Experiences />
