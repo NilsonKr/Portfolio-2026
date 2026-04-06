@@ -6,7 +6,7 @@ export const StyledProjectsContainer = styled.div`
   position: relative;
   width: 100%;
   padding-top: 50px;
-  min-height: 600vh;
+  min-height: 900vh;
 `
 
 export const StyledStickyContainer = styled.div<{ $inView: boolean }>`
@@ -30,7 +30,7 @@ export const StyledTitleContainer = styled.div`
   flex-direction: column;
   transform: rotate(-90deg);
   
-  & > *:nth-child(1){
+  & > *:nth-child(1) > h2{
     transform: translate(-155px);
     background: linear-gradient(to right, #1A1A1A 83.6%, #fff 83.6%);
     /* background: linear-gradient(to left, #1A1A1A 45.5%, #fff 45.5%); */
@@ -39,7 +39,7 @@ export const StyledTitleContainer = styled.div`
     color: transparent;
   }
 
-  & > *:nth-child(2){
+  & > *:nth-child(2) > h2{
     transform: translate(200px);
     background: linear-gradient(to right, #1A1A1A 39.9%, #fff 39.9%);
     -webkit-background-clip: text;

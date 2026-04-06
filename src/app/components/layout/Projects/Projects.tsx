@@ -7,7 +7,7 @@ import { StyledProjectsContainer, StyledStickyContainer, StyledTitleContainer, S
 
 import { ContentfulContext } from '../../../context/contentful'
 
-import withProjectItemAnimationHOC from '../../HOC/ProjectItemAnimated'
+import { withProjectItemAnimation, withProjectsTitleAnimation } from './projects.animated'
 
 import ProjectItem from './ProjectItem'
 
@@ -41,11 +41,30 @@ const animatedProjectParams = {
 }
 
 const animatedProjectItems = {
-  1: withProjectItemAnimationHOC(ProjectItem, animatedProjectParams[1]),
-  2: withProjectItemAnimationHOC(ProjectItem, animatedProjectParams[2]),
-  3: withProjectItemAnimationHOC(ProjectItem, animatedProjectParams[3]),
-
+  1: withProjectItemAnimation(ProjectItem, animatedProjectParams[1]),
+  2: withProjectItemAnimation(ProjectItem, animatedProjectParams[2]),
+  3: withProjectItemAnimation(ProjectItem, animatedProjectParams[3]),
 }
+
+
+const animatedTitleParams = {
+  'first': {
+    entranceTrigger: [0.35, 0.55],
+    entranceX: ['120%', '0%'],
+    exitTrigger: [0, 0.3],
+    exitX: ['0%', '120%'],
+  },
+  'second': {
+    entranceTrigger: [0.45, 0.65],
+    entranceX: ['-120%', '0%'],
+    exitTrigger: [0.05, 0.3],
+    exitX: ['0%', '-120%'],
+  }
+}
+
+const FirstTitleAnimated = withProjectsTitleAnimation(StyledTitleComponent, animatedTitleParams['first'])
+const SecondTitleAnimated = withProjectsTitleAnimation(StyledTitleComponent, animatedTitleParams['second'])
+
 
 type ComponentProps = {
   aboutMeScrollYProgress: MotionValue<number>
@@ -58,7 +77,7 @@ const Projects: React.FC<ComponentProps> = ({ aboutMeScrollYProgress, $inView })
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['25% end', 'end end'],
+    offset: ['10% end', 'end end'],
   })
 
   return (
@@ -73,8 +92,8 @@ const Projects: React.FC<ComponentProps> = ({ aboutMeScrollYProgress, $inView })
         </div>
 
         <StyledTitleContainer>
-          <StyledTitleComponent>PERSONAL</StyledTitleComponent>
-          <StyledTitleComponent>PROJECTS</StyledTitleComponent>
+          <FirstTitleAnimated aboutMeScrollYProgress={aboutMeScrollYProgress} scrollYProgress={scrollYProgress}>PERSONAL</FirstTitleAnimated>
+          <SecondTitleAnimated aboutMeScrollYProgress={aboutMeScrollYProgress} scrollYProgress={scrollYProgress}>PROJECTS</SecondTitleAnimated>
         </StyledTitleContainer>
       </StyledStickyContainer>
     </StyledProjectsContainer>
