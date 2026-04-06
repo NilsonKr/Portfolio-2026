@@ -48,7 +48,7 @@ const ExperienceItem: React.FC<ComponentProps> = ({ data, main, scrollYProgress 
       </SubtitleComponent>
 
       <StyledAnimatedTechStack scrollYProgress={scrollYProgress as MotionValue<number>} fontSize={main ? '1.18rem' : '1rem'} background={main ? 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% )' : 'radial-gradient( circle farthest-corner at 32.7% 82.7%, #780076 8.3%, #22093d 79.4% )'}>
-        {stack?.map((tech) => <span key={tech}>{tech + ' '}</span>)}
+        {stack?.join(' ')}
       </StyledAnimatedTechStack>
 
       <ParagraphComponent fontSize='0.9rem' fontWeight={500} margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>

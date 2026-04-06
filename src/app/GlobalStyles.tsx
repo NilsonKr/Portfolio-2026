@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     /* Fonts */
     --font-general-sans: ${fonts.generalSans};
     --font-satoshi: ${fonts.satoshi};
-    --font-nippo: ${fonts.nippo};
+    --font-clash: ${fonts.clash};
     --font-array: ${fonts.array};
   }
 

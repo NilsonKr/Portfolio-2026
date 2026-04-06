@@ -1,5 +1,6 @@
 'use client'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { useRef } from 'react'
+import { useScroll, useInView } from 'motion/react'
 
 import { Wrapper, HeroTextContainer, StyledBackground, StyledNoiseBackground, HeroBackgroundContainer, TagHeroComponent } from './page.style'
 
@@ -10,13 +11,22 @@ import SubtitleComponent from './components/SubtitleComponent'
 import ParagraphComponent from './components/ParagraphComponent'
 import GlowBackground from './components/GlowBackground'
 
-
 import Experiences from './components/layout/Experiences'
-
+import PersonalProjects from './components/layout/Projects'
+import AboutMe from './components/layout/AboutMe'
 
 import DotsBackground from './components/DotsBackground'
 
 export default function Home() {
+  const personalProjectsRef = useRef(null)
+  const aboutMeRef = useRef(null)
+
+  const { scrollYProgress: aboutMeScrollYProgress } = useScroll({
+    target: aboutMeRef,
+    offset: ['start end', 'end end'],
+  })
+  const inView = useInView(personalProjectsRef, { margin: '0px 0px -100% 0px' })
+
   return (<>
 
     <Wrapper>
@@ -63,6 +73,11 @@ export default function Home() {
     </Wrapper>
 
     <Experiences />
+
+    <div ref={personalProjectsRef}>
+      <PersonalProjects $inView={inView} aboutMeScrollYProgress={aboutMeScrollYProgress} />
+      <AboutMe containerRef={aboutMeRef} />
+    </div>
   </>
   )
 }
