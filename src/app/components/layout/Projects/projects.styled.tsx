@@ -9,8 +9,8 @@ export const StyledProjectsContainer = styled.div`
   min-height: 600vh;
 `
 
-export const StyledStickyContainer = styled.div`
-  position: fixed;
+export const StyledStickyContainer = styled.div<{ $inView: boolean }>`
+  position: ${({ $inView }) => $inView ? 'fixed' : 'absolute'};
   top: 0;
   width: 100%;
   height: 100vh;

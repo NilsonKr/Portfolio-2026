@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useContext } from 'react'
-import { useScroll, MotionValue } from 'motion/react'
+import { useScroll, useInView, MotionValue } from 'motion/react'
 
 import { StyledProjectsContainer, StyledStickyContainer, StyledTitleContainer, StyledTitleComponent } from './projects.styled'
 
@@ -49,9 +49,10 @@ const animatedProjectItems = {
 
 type ComponentProps = {
   aboutMeScrollYProgress: MotionValue<number>
+  $inView: boolean
 }
 
-const Projects: React.FC<ComponentProps> = ({ aboutMeScrollYProgress }) => {
+const Projects: React.FC<ComponentProps> = ({ aboutMeScrollYProgress, $inView }) => {
   const { personalProjects } = useContext(ContentfulContext)
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -62,12 +63,12 @@ const Projects: React.FC<ComponentProps> = ({ aboutMeScrollYProgress }) => {
 
   return (
     <StyledProjectsContainer ref={containerRef}>
-      <StyledStickyContainer>
+      <StyledStickyContainer $inView={$inView}>
         <div style={{ position: 'relative', zIndex: 0, display: 'flex', flexDirection: 'column', height: '100%' }}>
           {!!personalProjects.length && personalProjects.map(project => {
             const AnimatedProjectItem = animatedProjectItems[project.fields.id as keyof typeof animatedProjectItems]
 
-            return <AnimatedProjectItem key={project.fields.id as number} data={project.fields as PersonalProjectData} scrollYProgress={scrollYProgress} aboutMeScrollYProgress={aboutMeScrollYProgress} />
+            return <AnimatedProjectItem key={project.fields.id as number} data={project.fields as PersonalProjectData} reverse={project.fields.id === 2} scrollYProgress={scrollYProgress} aboutMeScrollYProgress={aboutMeScrollYProgress} />
           })}
         </div>
 
