@@ -3,7 +3,7 @@
 import { useRef, useContext } from 'react'
 import { useScroll, MotionValue } from 'motion/react'
 
-import { StyledProjectsContainer, StyledStickyContainer } from './projects.styled'
+import { StyledProjectsContainer, StyledStickyContainer, StyledTitleContainer, StyledTitleComponent } from './projects.styled'
 
 import { ContentfulContext } from '../../../context/contentful'
 
@@ -63,13 +63,18 @@ const Projects: React.FC<ComponentProps> = ({ aboutMeScrollYProgress }) => {
   return (
     <StyledProjectsContainer ref={containerRef}>
       <StyledStickyContainer>
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ position: 'relative', zIndex: 0, display: 'flex', flexDirection: 'column', height: '100%' }}>
           {!!personalProjects.length && personalProjects.map(project => {
             const AnimatedProjectItem = animatedProjectItems[project.fields.id as keyof typeof animatedProjectItems]
 
             return <AnimatedProjectItem key={project.fields.id as number} data={project.fields as PersonalProjectData} scrollYProgress={scrollYProgress} aboutMeScrollYProgress={aboutMeScrollYProgress} />
           })}
         </div>
+
+        <StyledTitleContainer>
+          <StyledTitleComponent>PERSONAL</StyledTitleComponent>
+          <StyledTitleComponent>PROJECTS</StyledTitleComponent>
+        </StyledTitleContainer>
       </StyledStickyContainer>
     </StyledProjectsContainer>
   )
