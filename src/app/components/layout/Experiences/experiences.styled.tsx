@@ -18,24 +18,22 @@ export const StyledStickyContainer = styled.div`
 
 export const StyledTopTitle = styled(SubtitleComponent)`
   position: absolute;
-  top: -12px;
+  top: -100px;
   right: 0;
   font-size: 7rem;
   font-family: var(--font-clash);
   line-height: 1;
   opacity: 0.1;
-  transform: scaleY(2.5);
 `
 
 export const StyledBottomTitle = styled(SubtitleComponent)`
   position: absolute;
-  bottom: -40px;
+  bottom: -60px;
   left: 0;
   font-size: 7rem;
   font-family: var(--font-clash);
   line-height: 1;
   opacity: 0.5;
-  transform: scaleY(1.5) ;
 `
 
 export const StyledExperiencesList = styled.div`

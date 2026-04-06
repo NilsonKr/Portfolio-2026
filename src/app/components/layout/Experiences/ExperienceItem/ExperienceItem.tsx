@@ -54,7 +54,7 @@ const ExperienceItem: React.FC<ComponentProps> = ({ data, main, scrollYProgress 
         </ParagraphComponent>
       </StyledDateRangeContainer>
 
-      <SubtitleComponent fontSize='2rem' fontWeight={600} margin='0 0 10px 0' gradient={main ? 'radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 35% )' : ''}>
+      <SubtitleComponent fontSize='2rem' lineHeight='1.3' fontWeight={600} margin='0 0 10px 0' gradient={main ? 'radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 35% )' : ''}>
         {role}
       </SubtitleComponent>
 

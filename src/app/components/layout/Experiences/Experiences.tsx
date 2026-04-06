@@ -20,16 +20,16 @@ const TopTitleAnimated = withExperiencesTitleAnimationHOC(StyledTopTitle, {
   xTrigger: [0.35, 0.45],
   xValues: ['100%', '0%'],
   scaleYTrigger: [0.8, 0.9],
-  scaleYValues: [1, 0],
-  transformOrigin: 'top'
+  scaleYValues: [2.5, 0],
+  transformOrigin: 'top',
 })
 
 const BottomTitleAnimated = withExperiencesTitleAnimationHOC(StyledBottomTitle, {
   xTrigger: [0.5, 0.65],
   xValues: ['-100%', '0%'],
   scaleYTrigger: [0.9, 1],
-  scaleYValues: [1, 0],
-  transformOrigin: 'bottom'
+  scaleYValues: [1.5, 0],
+  transformOrigin: 'bottom',
 })
 
 const animatedExperiences = {
