@@ -35,7 +35,7 @@ export const StyledBottomTitle = styled(SubtitleComponent)`
   font-family: var(--font-clash);
   line-height: 1;
   opacity: 0.5;
-  transform: scaleY(1.5);
+  transform: scaleY(1.5) ;
 `
 
 export const StyledExperiencesList = styled.div`
