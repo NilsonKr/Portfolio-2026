@@ -12,6 +12,7 @@ export type SubtitleComponentProps = {
   margin?: string
   textShadow?: string
   gradient?: string
+  fontFamily?: string
   style?: React.CSSProperties
   className?: string
   zIndex?: number
@@ -29,6 +30,7 @@ const SubtitleComponent = React.forwardRef<HTMLHeadingElement, SubtitleComponent
   zIndex,
   textShadow,
   gradient,
+  fontFamily,
   style,
   className,
   id,
@@ -47,6 +49,7 @@ const SubtitleComponent = React.forwardRef<HTMLHeadingElement, SubtitleComponent
       $margin={margin}
       $textShadow={textShadow}
       $gradient={gradient}
+      $fontFamily={fontFamily}
       style={style}
       className={className}
       id={id}

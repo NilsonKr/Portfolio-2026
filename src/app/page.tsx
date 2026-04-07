@@ -1,6 +1,6 @@
 'use client'
-import { useRef } from 'react'
-import { useScroll, useInView } from 'motion/react'
+import { useRef, useState } from 'react'
+import { useScroll, useInView, useMotionValueEvent } from 'motion/react'
 
 import { Wrapper, StyledBackground, StyledNoiseBackground } from './page.style'
 
@@ -19,9 +19,15 @@ export default function Home() {
   const aboutMeRef = useRef(null)
 
   const inView = useInView(personalProjectsRef, { margin: '0px 0px -100% 0px' })
+  const [aboutMeSettled, setAboutMeSettled] = useState(false)
+
   const { scrollYProgress: aboutMeScrollYProgress } = useScroll({
     target: aboutMeRef,
     offset: ['start end', 'end end'],
+  })
+
+  useMotionValueEvent(aboutMeScrollYProgress, 'change', (value) => {
+    setAboutMeSettled(value >= 0.66)
   })
 
   return (<>
@@ -40,7 +46,7 @@ export default function Home() {
     <Experiences />
 
     <div ref={personalProjectsRef}>
-      <PersonalProjects $inView={inView} aboutMeScrollYProgress={aboutMeScrollYProgress} />
+      <PersonalProjects $inView={inView && !aboutMeSettled} aboutMeScrollYProgress={aboutMeScrollYProgress} />
       <AboutMe containerRef={aboutMeRef} />
     </div>
   </>

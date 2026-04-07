@@ -19,6 +19,24 @@ type StyledProps = {
   $cursor?: string
 }
 
+export const StyledGlassWrapper = styled.div`
+  position: relative;
+  display: inline-flex;
+`
+
+export const StyledFloatingShadow = styled.div`
+  position: absolute;
+  bottom: -35px;
+  left: 10%;
+  width: 80%;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.22) 0%, transparent 70%);
+  filter: blur(5px);
+  pointer-events: none;
+  z-index: -1;
+`
+
 export const StyledGlassContainer = styled.div<StyledProps>`
   display: flex;
   justify-content: center;
@@ -108,4 +126,5 @@ export const StyledGlassContainer = styled.div<StyledProps>`
     pointer-events: none;
     z-index: 2;
   }
+
 `

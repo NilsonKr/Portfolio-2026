@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useContext } from 'react'
-import { useScroll, useInView, MotionValue } from 'motion/react'
+import { useScroll, MotionValue } from 'motion/react'
 
 import { StyledProjectsContainer, StyledStickyContainer, StyledTitleContainer, StyledTitleComponent } from './projects.styled'
 

@@ -22,7 +22,7 @@ function withExperiencesTitleAnimation(
   WrappedComponent: React.ComponentType<TitleComponentProps>,
   { xTrigger, xValues, scaleYTrigger, scaleYValues, transformOrigin }: TitleAnimationConfig
 ) {
-  const MotionComponent = motion(WrappedComponent as React.ComponentType)
+  const MotionComponent = motion.create(WrappedComponent as React.ComponentType)
 
   const ExperiencesTitleAnimated = ({ scrollYProgress, ...props }: WithAnimationProps) => {
     const x = useTransform(scrollYProgress, xTrigger, xValues)

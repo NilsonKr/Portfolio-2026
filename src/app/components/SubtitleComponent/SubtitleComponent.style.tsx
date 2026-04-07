@@ -10,10 +10,11 @@ type StyledProps = {
   $zIndex?: number
   $textShadow?: string
   $gradient?: string
+  $fontFamily?: string
 }
 
 export const StyledSubtitle = styled.h2<StyledProps>`
-  font-family: 'Satoshi', sans-serif;
+  font-family: ${({ $fontFamily }) => $fontFamily ?? 'var(--font-satoshi)'};
   font-size: ${({ $fontSize }) => $fontSize ?? '2.5rem'};
   font-weight: ${({ $fontWeight }) => $fontWeight ?? 600};
   color: ${({ $color }) => $color ?? 'var(--color-title)'};
