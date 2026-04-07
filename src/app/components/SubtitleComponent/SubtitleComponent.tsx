@@ -10,6 +10,7 @@ export type SubtitleComponentProps = {
   lineHeight?: string
   letterSpacing?: string
   margin?: string
+  maxWidth?: string
   textShadow?: string
   gradient?: string
   fontFamily?: string
@@ -27,6 +28,7 @@ const SubtitleComponent = React.forwardRef<HTMLHeadingElement, SubtitleComponent
   lineHeight,
   letterSpacing,
   margin,
+  maxWidth,
   zIndex,
   textShadow,
   gradient,
@@ -47,6 +49,7 @@ const SubtitleComponent = React.forwardRef<HTMLHeadingElement, SubtitleComponent
       $letterSpacing={letterSpacing}
       $zIndex={zIndex}
       $margin={margin}
+      $maxWidth={maxWidth}
       $textShadow={textShadow}
       $gradient={gradient}
       $fontFamily={fontFamily}

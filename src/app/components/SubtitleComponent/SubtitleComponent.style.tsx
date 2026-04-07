@@ -7,6 +7,7 @@ type StyledProps = {
   $lineHeight?: string
   $letterSpacing?: string
   $margin?: string
+  $maxWidth?: string
   $zIndex?: number
   $textShadow?: string
   $gradient?: string
@@ -21,6 +22,7 @@ export const StyledSubtitle = styled.h2<StyledProps>`
   margin: ${({ $margin }) => $margin ?? '0'};
   line-height: ${({ $lineHeight }) => $lineHeight ?? '1.5'};
   letter-spacing: ${({ $letterSpacing }) => $letterSpacing ?? 'normal'};
+  max-width: ${({ $maxWidth }) => $maxWidth ?? 'unset'};
   z-index: ${({ $zIndex }) => $zIndex ?? 1};
   text-shadow: ${({ $textShadow }) => $textShadow ?? 'unset'};
   ${({ $gradient }) => $gradient && `

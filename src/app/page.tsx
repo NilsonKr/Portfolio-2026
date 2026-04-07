@@ -47,7 +47,7 @@ export default function Home() {
 
     <div ref={personalProjectsRef}>
       <PersonalProjects $inView={inView && !aboutMeSettled} aboutMeScrollYProgress={aboutMeScrollYProgress} />
-      <AboutMe containerRef={aboutMeRef} />
+      <AboutMe containerRef={aboutMeRef} scrollYProgress={aboutMeScrollYProgress} />
     </div>
   </>
   )

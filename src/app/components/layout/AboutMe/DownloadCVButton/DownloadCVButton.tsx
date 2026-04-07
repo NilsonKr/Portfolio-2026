@@ -11,7 +11,6 @@ type ComponentProps = {
 
 const DownloadCVButton: React.FC<ComponentProps> = ({ cvUrl, fileName = 'Nilson_Diaz_CV.pdf' }) => {
 
-
   const handleDownload = async () => {
     if (!cvUrl) return
 
