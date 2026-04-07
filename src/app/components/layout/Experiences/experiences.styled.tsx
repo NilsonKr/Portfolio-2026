@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 import FlexContainer from '../../FlexContainer'
+import SubtitleComponent from '../../SubtitleComponent'
 
 export const StyledExperiencesContainer = styled.div`
   width: 100%;
   padding-top: 50px;
-  min-height: 300vh;
+  min-height: 1500vh;
 `
 
 export const StyledStickyContainer = styled.div`                                
@@ -15,20 +16,37 @@ export const StyledStickyContainer = styled.div`
   overflow: hidden;                                                           
 `
 
-export const StyledTitleWrapper = styled.div`
-  perspective: 1200px;
-  display: flex;
-  justify-content: center;
+export const StyledTopTitle = styled(SubtitleComponent)`
+  position: absolute;
+  top: -100px;
+  right: 0;
+  font-size: 7rem;
+  font-family: var(--font-clash);
+  line-height: 1;
+  opacity: 0.1;
+`
+
+export const StyledBottomTitle = styled(SubtitleComponent)`
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  font-size: 7rem;
+  font-family: var(--font-clash);
+  line-height: 1;
+  opacity: 0.5;
 `
 
 export const StyledExperiencesList = styled.div`
-  perspective: 1200px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  row-gap: 40px;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  padding: 20px 0;
 
-  & > *:first-child {
-    grid-column: 1 / -1;
+  & > *:nth-child(2) {
+    transform: translateY(160px);
+  }
+
+    & > *:nth-child(3) {
+    transform: translateY(280px);
   }
 `

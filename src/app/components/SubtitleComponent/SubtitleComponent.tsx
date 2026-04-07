@@ -11,13 +11,15 @@ export type SubtitleComponentProps = {
   letterSpacing?: string
   margin?: string
   textShadow?: string
+  gradient?: string
+  style?: React.CSSProperties
   className?: string
   zIndex?: number
   id?: string
   as?: React.ElementType
 }
 
-const SubtitleComponent: React.FC<SubtitleComponentProps> = ({
+const SubtitleComponent = React.forwardRef<HTMLHeadingElement, SubtitleComponentProps>(({
   fontSize,
   fontWeight,
   color,
@@ -26,13 +28,16 @@ const SubtitleComponent: React.FC<SubtitleComponentProps> = ({
   margin,
   zIndex,
   textShadow,
+  gradient,
+  style,
   className,
   id,
   as,
   children
-}) => {
+}, ref) => {
   return (
     <StyledSubtitle
+      ref={ref}
       $fontSize={fontSize}
       $fontWeight={fontWeight}
       $color={color}
@@ -41,6 +46,8 @@ const SubtitleComponent: React.FC<SubtitleComponentProps> = ({
       $zIndex={zIndex}
       $margin={margin}
       $textShadow={textShadow}
+      $gradient={gradient}
+      style={style}
       className={className}
       id={id}
       as={as}
@@ -48,6 +55,8 @@ const SubtitleComponent: React.FC<SubtitleComponentProps> = ({
       {children}
     </StyledSubtitle>
   )
-}
+})
+
+SubtitleComponent.displayName = 'SubtitleComponent'
 
 export default SubtitleComponent

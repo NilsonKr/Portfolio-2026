@@ -77,7 +77,7 @@ const Projects: React.FC<ComponentProps> = ({ aboutMeScrollYProgress, $inView })
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['10% end', 'end end'],
+    offset: ['start end', 'end end'],
   })
 
   return (

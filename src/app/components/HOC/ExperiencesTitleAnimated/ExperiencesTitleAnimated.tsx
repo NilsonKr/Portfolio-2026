@@ -1,30 +1,35 @@
 'use client'
 
-import React, { RefObject } from 'react'
+import React from 'react'
 
-import { motion, useScroll, useTransform } from 'motion/react'
+import { MotionValue, motion, useTransform } from 'motion/react'
 
 import { TitleComponentProps } from '../../TitleComponent/TitleComponent'
 
-type WithAnimationProps = TitleComponentProps & {
-  containerRef: RefObject<HTMLDivElement | null>
+type TitleAnimationConfig = {
+  xTrigger: number[]
+  xValues: (number | string)[]
+  scaleYTrigger: number[]
+  scaleYValues: number[]
+  transformOrigin?: string
 }
 
-function withExperiencesTitleAnimation(WrappedComponent: React.ComponentType<TitleComponentProps>) {
-  const ExperiencesTitleAnimated = ({ containerRef, ...props }: WithAnimationProps) => {
-    const { scrollYProgress } = useScroll({
-      target: containerRef,
-      offset: ['start 80%', 'end end'],
-    })
+type WithAnimationProps = TitleComponentProps & {
+  scrollYProgress: MotionValue<number>
+}
 
-    const y = useTransform(scrollYProgress, [0.1, 0.25], [200, 0])
-    const opacity = useTransform(scrollYProgress, [0.1, 0.25], [0, 1])
-    const rotateX = useTransform(scrollYProgress, [0.1, 0.25], [-60, 0])
+function withExperiencesTitleAnimation(
+  WrappedComponent: React.ComponentType<TitleComponentProps>,
+  { xTrigger, xValues, scaleYTrigger, scaleYValues, transformOrigin }: TitleAnimationConfig
+) {
+  const MotionComponent = motion(WrappedComponent as React.ComponentType)
+
+  const ExperiencesTitleAnimated = ({ scrollYProgress, ...props }: WithAnimationProps) => {
+    const x = useTransform(scrollYProgress, xTrigger, xValues)
+    const scaleY = useTransform(scrollYProgress, scaleYTrigger, scaleYValues)
 
     return (
-      <motion.div style={{ opacity, y, rotateX }}>
-        <WrappedComponent {...props} />
-      </motion.div>
+      <MotionComponent style={{ x, scaleY, transformOrigin }} {...(props as TitleComponentProps)} />
     )
   }
 
