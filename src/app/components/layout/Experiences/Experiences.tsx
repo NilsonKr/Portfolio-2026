@@ -2,11 +2,11 @@
 
 import { useContext } from 'react'
 
-import { MotionValue } from 'motion/react'
+import type { MotionValue } from 'motion/react'
 
 import { StyledExperiencesContainer, StyledStickyContainer, StyledTopTitle, StyledBottomTitle, StyledExperiencesList } from "./experiences.styled"
 
-import { ContentfulContext } from '../../../context/contentful'
+import { ContentfulContext } from '../../../context/contentfulClient'
 
 import { ExperienceData } from '@/app/types/data'
 

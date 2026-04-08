@@ -15,7 +15,7 @@ export const withOrbBackgroundAnimation = (triggers: number[]) => {
 
     return (
       <motion.div style={{ opacity }}>
-        <StyledOrbBackground background={background} />
+        <StyledOrbBackground $background={background} />
       </motion.div>
     )
   }

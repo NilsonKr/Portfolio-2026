@@ -6,19 +6,15 @@ import { generalSans, satoshi, clashDisplay, array } from '@/app/fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'Personal portfolio',
+  title: 'Nilson Diaz',
+  description: 'Nilson Diaz personal portfolio',
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'
-  const res = await fetch(`${baseUrl}/api/contentful`)
-  const data = await res.json()
-
   return (
     <html lang="en" className={`${generalSans.variable} ${satoshi.variable} ${clashDisplay.variable} ${array.variable}`}>
       <head>
@@ -28,7 +24,7 @@ export default async function RootLayout({
 
       <body>
         <StyledComponentsRegistry>
-          <ContentfulProvider data={data}>
+          <ContentfulProvider>
             <GlobalStyles />
             {children}
           </ContentfulProvider>

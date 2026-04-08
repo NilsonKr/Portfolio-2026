@@ -44,13 +44,13 @@ export const StyledShowcaseImage = styled(Image)`
   }
 `
 
-export const StyledLinks = styled.div<{ background: string; filter: string }>`
+export const StyledLinks = styled.div<{ $background: string; $filter: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 
-  filter: ${({ filter }) => filter};
+  filter: ${({ $filter }) => $filter};
 
   & > a {
     text-decoration: none;
@@ -59,7 +59,7 @@ export const StyledLinks = styled.div<{ background: string; filter: string }>`
   }
 
   & > a:hover {
-    background: ${({ background }) => background};
+    background: ${({ $background }) => $background};
     background-clip: text;
     color: transparent;
     -webkit-background-clip: text;

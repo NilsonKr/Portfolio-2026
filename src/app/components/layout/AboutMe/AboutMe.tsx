@@ -1,13 +1,13 @@
 'use client'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { useContext, RefObject, useState } from 'react'
-import { MotionValue } from 'motion/react'
+import type { MotionValue } from 'motion/react'
 import Image from 'next/image'
 
 import { StyledAboutMeContainer, StyledStickyContainer, StyledLayout } from './aboutMe.styled'
 import { PictureAnimated, DescriptionAnimated, LinksAnimated, SaluteHandAnimated } from './aboutMe.animated'
 
-import { ContentfulContext } from '../../../context/contentful'
+import { ContentfulContext } from '../../../context/contentfulClient'
 
 import FlexContainer from '../../FlexContainer'
 import SubtitleComponent from '../../SubtitleComponent'

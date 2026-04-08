@@ -4,7 +4,7 @@ import { HiLocationMarker } from "react-icons/hi";
 
 import { StyledContainer, StyledIconsContainer } from './heroHeader.styled'
 
-import { ContentfulContext } from '@/app/context/contentful';
+import { ContentfulContext } from '@/app/context/contentfulClient';
 
 import ParagraphComponent from '../../ParagraphComponent'
 import GlassContainer from "../../GlassContainer"
