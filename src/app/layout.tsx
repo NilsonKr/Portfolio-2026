@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import StyledComponentsRegistry from '@/app/layouts/StyledComponentsRegistry'
 import ContentfulProvider from '@/app/context/contentful'
 import GlobalStyles from '@/app/GlobalStyles'
+import { generalSans, satoshi, clashDisplay, array } from '@/app/fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -9,22 +10,20 @@ export const metadata: Metadata = {
   description: 'Personal portfolio',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'
+  const res = await fetch(`${baseUrl}/api/contentful`)
+  const data = await res.json()
+
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=satoshi@400,500,700&f[]=clash-display@400,500,600,700&f[]=array@400&display=swap"
-        />
-      </head>
+    <html lang="en" className={`${generalSans.variable} ${satoshi.variable} ${clashDisplay.variable} ${array.variable}`}>
       <body>
         <StyledComponentsRegistry>
-          <ContentfulProvider>
+          <ContentfulProvider data={data}>
             <GlobalStyles />
             {children}
           </ContentfulProvider>
