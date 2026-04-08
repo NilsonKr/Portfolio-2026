@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
-import { MotionValue, motion, useTransform } from 'motion/react'
+import { MotionValue, motion, useTransform, useMotionValueEvent, useAnimationControls } from 'motion/react'
 
 import { StyledSaluteHand } from './aboutMe.styled'
 
@@ -56,14 +56,46 @@ export const LinksAnimated = ({ scrollYProgress, children }: AnimationProps) => 
 
 const MotionSaluteHand = motion.create(StyledSaluteHand)
 
-export const SaluteHandAnimated = ({ scrollYProgress, children }: AnimationProps) => {
-  const opacity = useTransform(scrollYProgress, [0.45, 0.55], [0, 1])
+type SaluteHandAnimationProps = AnimationProps & {
+  hovering?: boolean
+}
+
+export const SaluteHandAnimated = ({ scrollYProgress, hovering, children }: SaluteHandAnimationProps) => {
+  const [triggered, setTriggered] = useState(false)
+  const controls = useAnimationControls()
+  const cooldown = useRef(false)
+
+  const playAnimation = async () => {
+    if (cooldown.current) return
+    cooldown.current = true
+    await controls.start({ y: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } })
+    await controls.start({ rotate: [30, -10, 30, -10, 0], transition: { duration: 0.6, ease: 'easeInOut' } })
+    await controls.start({ y: 20, opacity: 0, transition: { delay: 0.5, duration: 0.4, ease: 'easeIn' } })
+    cooldown.current = false
+  }
+
+  useMotionValueEvent(scrollYProgress, 'change', (value) => {
+    if (value >= 0.8 && !triggered) {
+      setTriggered(true)
+      playAnimation()
+    }
+
+    if (value < 0.8 && triggered) {
+      setTriggered(false)
+      controls.stop()
+      controls.set({ y: 20, opacity: 0 })
+      cooldown.current = false
+    }
+  })
+
+  useEffect(() => {
+    if (hovering) playAnimation()
+  }, [hovering])
 
   return (
     <MotionSaluteHand
-      style={{ opacity }}
-      animate={{ rotate: [-40, 20, -10, 20, 0] }}
-      transition={{ duration: 1.2, delay: 1, ease: 'easeInOut', repeat: Infinity, repeatDelay: 3 }}
+      initial={{ y: 20, opacity: 0 }}
+      animate={controls}
     >
       {children}
     </MotionSaluteHand>

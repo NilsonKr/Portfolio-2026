@@ -1,6 +1,6 @@
 'use client'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { useContext, RefObject } from 'react'
+import { useContext, RefObject, useState } from 'react'
 import { MotionValue } from 'motion/react'
 import Image from 'next/image'
 
@@ -24,6 +24,8 @@ type ComponentProps = {
 const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) => {
   const { aboutMe } = useContext(ContentfulContext)
 
+  const [pictureHovered, setPictureHovered] = useState(false)
+
   const descriptionParagraphs = (aboutMe?.fields.description as string)?.split('/n')
   const showcaseUrl = aboutMe?.fields?.picture?.fields.file?.url
   const cvUrl = aboutMe?.fields?.cv?.fields.file?.url
@@ -44,7 +46,9 @@ const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) =>
                     width={260}
                     height={240}
                     priority
-                    style={{ borderRadius: '8px' }}
+                    style={{ borderRadius: '8px', cursor: 'pointer' }}
+                    onMouseEnter={() => setPictureHovered(true)}
+                    onMouseLeave={() => setPictureHovered(false)}
                   />
                 </PictureAnimated>
               }
@@ -52,14 +56,14 @@ const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) =>
               <LinksAnimated scrollYProgress={scrollYProgress}>
                 {cvUrl && <DownloadCVButton cvUrl={cvUrl} fileName={cvFileName} />}
 
-                <FlexContainer gap='18px' margin='20px 0 0' justify='center'>
-                  <GlassContainer floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.github, '_blank')}>
+                <FlexContainer gap='18px' margin='30px 0 0' justify='center'>
+                  <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.github, '_blank')}>
                     <FaGithub size={24} />
                   </GlassContainer>
-                  <GlassContainer floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.linkedIn, '_blank')} style={{ transform: 'translateY(10px)' }}>
+                  <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.linkedIn, '_blank')} style={{ transform: 'translateY(10px)' }}>
                     <FaLinkedin size={24} />
                   </GlassContainer>
-                  <GlassContainer floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.getonboard, '_blank')}>
+                  <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.getonboard, '_blank')}>
                     <Image src='/getonbrd.svg' alt='Get on Board' width={24} height={24} style={{ filter: 'grayscale(100%)' }} />
                   </GlassContainer>
                 </FlexContainer>
@@ -69,7 +73,7 @@ const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) =>
             <FlexContainer justify='center' direction='column' height='100%' maxWidth='60%'>
               <DescriptionAnimated scrollYProgress={scrollYProgress}>
                 <div style={{ position: 'relative', width: 'fit-content' }}>
-                  <SaluteHandAnimated scrollYProgress={scrollYProgress}>
+                  <SaluteHandAnimated scrollYProgress={scrollYProgress} hovering={pictureHovered}>
                     👋
                   </SaluteHandAnimated>
                   <SubtitleComponent maxWidth='fit-content' lineHeight='1' fontFamily='var(--font-general-sans)'>A little about me</SubtitleComponent>

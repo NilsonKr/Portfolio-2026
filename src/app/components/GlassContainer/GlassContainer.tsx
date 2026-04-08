@@ -19,6 +19,7 @@ export type GlassContainerProps = {
   cursor?: string
   style?: React.CSSProperties
   floatingShadow?: boolean
+  floatingAnimation?: boolean
   onClick?: () => void
 }
 
@@ -42,10 +43,11 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
   cursor,
   style,
   floatingShadow,
+  floatingAnimation,
   onClick,
 }) => {
   return (
-    <StyledGlassWrapper>
+    <StyledGlassWrapper $floatingAnimation={floatingAnimation}>
       <StyledGlassContainer
         width={width}
         height={height}

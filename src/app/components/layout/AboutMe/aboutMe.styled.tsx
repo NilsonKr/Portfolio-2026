@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const StyledSaluteHand = styled.span`
   position: absolute;
-  top: -12px;
-  right: -6px;
+  top: -16px;
+  right: 2px;
   font-size: 1.5rem;
   display: inline-block;
   transform-origin: bottom center;
@@ -12,7 +12,7 @@ export const StyledSaluteHand = styled.span`
 
 export const StyledAboutMeContainer = styled.div`
   width: 100%;
-  min-height: 300vh;
+  min-height: 200vh;
 `
 
 export const StyledStickyContainer = styled.div`

@@ -1,5 +1,10 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { GlassContainerProps } from './GlassContainer'
+
+const float = keyframes`
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+`
 
 type StyledProps = {
   width?: string
@@ -19,9 +24,12 @@ type StyledProps = {
   $cursor?: string
 }
 
-export const StyledGlassWrapper = styled.div`
+export const StyledGlassWrapper = styled.div<{ $floatingAnimation?: boolean }>`
   position: relative;
   display: inline-flex;
+  ${({ $floatingAnimation }) => $floatingAnimation && css`
+    animation: ${float} 3s ease-in-out infinite;
+  `}
 `
 
 export const StyledFloatingShadow = styled.div`

@@ -11,6 +11,7 @@ import Hero from './components/layout/Hero'
 import Experiences from './components/layout/Experiences'
 import PersonalProjects from './components/layout/Projects'
 import AboutMe from './components/layout/AboutMe'
+import FooterPage from './components/layout/FooterPage'
 
 import DotsBackground from './components/DotsBackground'
 
@@ -45,10 +46,12 @@ export default function Home() {
 
     <Experiences />
 
-    <div ref={personalProjectsRef}>
+    <div style={{ position: 'relative' }} ref={personalProjectsRef}>
       <PersonalProjects $inView={inView && !aboutMeSettled} aboutMeScrollYProgress={aboutMeScrollYProgress} />
       <AboutMe containerRef={aboutMeRef} scrollYProgress={aboutMeScrollYProgress} />
+      <FooterPage />
     </div>
+
   </>
   )
 }
