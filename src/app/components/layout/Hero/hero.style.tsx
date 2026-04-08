@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
+import { media } from '@/app/utils/theme'
+
 export const HeroBackgroundContainer = styled.div`
   position: relative;
   min-width: 100%;
@@ -8,6 +10,10 @@ export const HeroBackgroundContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.tablet} {
+    min-height: 100svh;
+  }
 `
 export const HeroTextContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
@@ -19,6 +25,9 @@ export const HeroTextContainer = styled(motion.div).attrs(() => ({
   justify-content: center;
   align-items: center;
   padding: 20px 30px;
+  max-width: 100%;
+  text-align: center;
+
   box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(3px);
   mask-image: linear-gradient(
@@ -31,6 +40,16 @@ export const HeroTextContainer = styled(motion.div).attrs(() => ({
   );
   mask-composite: intersect;
   -webkit-mask-composite: destination-in;
+
+  ${media.tablet} {
+    padding: 16px 18px;
+  }
+
+  ${media.mobile} {
+    padding: 12px 14px;
+    backdrop-filter: blur(0px);
+  }
+  
 `
 
 export const StyledTitlePerspective = styled.div`
@@ -73,8 +92,12 @@ export const StyledDescription = styled(motion.div).attrs(() => ({
   margin-top: 30px;
 
   & > p {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
     color: #404040;
     text-shadow: 0px 5px 8px rgba(0, 0, 0, 0.21);
+  }
+
+  ${media.tablet} {
+    margin-top: 22px;
   }
 `

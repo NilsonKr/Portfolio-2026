@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 import TitleComponent from '../../TitleComponent'
 
+import { media } from '@/app/utils/theme'
+
 export const StyledProjectsContainer = styled.div`
   position: relative;
   width: 100%;
@@ -45,6 +47,10 @@ export const StyledTitleContainer = styled.div`
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  ${media.tablet} {
+    display: none;
   }
 `
 

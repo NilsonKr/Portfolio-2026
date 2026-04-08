@@ -26,7 +26,7 @@ const TopTitleAnimated = withExperiencesTitleAnimationHOC(StyledTopTitle, {
 
 const BottomTitleAnimated = withExperiencesTitleAnimationHOC(StyledBottomTitle, {
   xTrigger: [0.5, 0.65],
-  xValues: ['-100%', '0%'],
+  xValues: ['-110%', '0%'],
   scaleYTrigger: [0.9, 1],
   scaleYValues: [1.5, 0],
   transformOrigin: 'bottom',
