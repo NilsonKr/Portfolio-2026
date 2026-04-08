@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import * as THREE from 'three'
+import { Scene, PerspectiveCamera, WebGLRenderer } from 'three'
 
 import useThree from '@/app/hooks/useThree'
 
@@ -10,9 +10,9 @@ import { StyledCanvas } from './ThreeCanvas.style'
 
 type ThreeCanvasProps = {
   setup: (ctx: {
-    scene: THREE.Scene
-    camera: THREE.PerspectiveCamera
-    renderer: THREE.WebGLRenderer
+    scene: Scene
+    camera: PerspectiveCamera
+    renderer: WebGLRenderer
   }) => (() => void) | void
   className?: string
 }

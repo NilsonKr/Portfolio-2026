@@ -1,5 +1,6 @@
 'use client'
 import { useRef, useState } from 'react'
+import dynamic from 'next/dynamic'
 import { useScroll, useInView, useMotionValueEvent } from 'motion/react'
 
 import { Wrapper, StyledBackground, StyledNoiseBackground } from './page.style'
@@ -7,13 +8,12 @@ import { Wrapper, StyledBackground, StyledNoiseBackground } from './page.style'
 import HeroHeader from './components/layout/HeroHeader'
 import HeroFooter from './components/layout/HeroFooter'
 import Hero from './components/layout/Hero'
-
-import Experiences from './components/layout/Experiences'
-import PersonalProjects from './components/layout/Projects'
-import AboutMe from './components/layout/AboutMe'
-import FooterPage from './components/layout/FooterPage'
-
 import DotsBackground from './components/DotsBackground'
+
+const ExperiencesModule = dynamic(() => import('./components/layout/Experiences'))
+const ProjectsModule = dynamic(() => import('./components/layout/Projects'))
+const AboutMeModule = dynamic(() => import('./components/layout/AboutMe'))
+const FooterPageModule = dynamic(() => import('./components/layout/FooterPage'))
 
 export default function Home() {
   const heroRef = useRef(null)
@@ -57,12 +57,12 @@ export default function Home() {
 
     </Wrapper>
 
-    <Experiences containerRef={experiencesRef} scrollYProgress={experiencesScrollYProgress} />
+    <ExperiencesModule containerRef={experiencesRef} scrollYProgress={experiencesScrollYProgress} />
 
     <div style={{ position: 'relative' }} ref={personalProjectsRef}>
-      <PersonalProjects $inView={inView && !aboutMeSettled} aboutMeScrollYProgress={aboutMeScrollYProgress} />
-      <AboutMe containerRef={aboutMeRef} scrollYProgress={aboutMeScrollYProgress} />
-      <FooterPage />
+      <ProjectsModule $inView={inView && !aboutMeSettled} aboutMeScrollYProgress={aboutMeScrollYProgress} />
+      <AboutMeModule containerRef={aboutMeRef} scrollYProgress={aboutMeScrollYProgress} />
+      <FooterPageModule />
     </div>
 
   </>

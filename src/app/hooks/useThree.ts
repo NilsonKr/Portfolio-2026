@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
-import * as THREE from 'three'
+import { Scene, PerspectiveCamera, WebGLRenderer } from 'three'
 
 type SetupFn = (ctx: {
-  scene: THREE.Scene
-  camera: THREE.PerspectiveCamera
-  renderer: THREE.WebGLRenderer
+  scene: Scene
+  camera: PerspectiveCamera
+  renderer: WebGLRenderer
 }) => (() => void) | void
 
 const useThree = (setup: SetupFn) => {
@@ -14,18 +14,18 @@ const useThree = (setup: SetupFn) => {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
-    renderer.setPixelRatio(window.devicePixelRatio)
+    const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true })
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.setSize(canvas.clientWidth, canvas.clientHeight)
 
-    const camera = new THREE.PerspectiveCamera(
+    const camera = new PerspectiveCamera(
       75,
       canvas.clientWidth / canvas.clientHeight,
       0.1,
       1000
     )
 
-    const scene = new THREE.Scene()
+    const scene = new Scene()
 
     const cleanup = setup({ scene, camera, renderer })
 

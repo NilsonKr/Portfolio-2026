@@ -21,6 +21,11 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${generalSans.variable} ${satoshi.variable} ${clashDisplay.variable} ${array.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://images.ctfassets.net" />
+        <link rel="preconnect" href="https://cdn.contentful.com" />
+      </head>
+
       <body>
         <StyledComponentsRegistry>
           <ContentfulProvider data={data}>
