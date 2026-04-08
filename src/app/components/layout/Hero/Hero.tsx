@@ -48,7 +48,7 @@ const Hero: React.FC<ComponentProps> = ({ containerRef }) => {
               color='#000'
               fontSize='clamp(0.9rem, 1.5vw, 1.1rem)'
               fontWeight={600}
-              maxWidth='min(90%, 65ch)'
+              maxWidth='min(65%, 65ch)'
               textAlign='center'
               textShadow='0px 5px 8px rgba(0, 0, 0, 0.15)'
             >
