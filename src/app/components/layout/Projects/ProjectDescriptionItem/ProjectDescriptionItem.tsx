@@ -1,10 +1,9 @@
 import { FaGithub } from "react-icons/fa";
 import { TbWorld } from "react-icons/tb";
 
-import { StyledContainer, StyledShowcaseImage, StyledLinks } from './projectDescriptionItem.styled'
+import { StyledRoot, StyledContainer, StyledHeader, StyledShowcaseImage, StyledLinks } from './projectDescriptionItem.styled'
 
 import ParagraphComponent from '@/app/components/ParagraphComponent'
-import FlexContainer from '@/app/components/FlexContainer'
 import HighlightTitleComponent from '../HighlightTitleComponent'
 
 import { PersonalProjectData } from '@/app/types/data'
@@ -53,7 +52,7 @@ const ProjectDescriptionItem: React.FC<ComponentProps> = ({ data, reverse }) => 
   const style = projectsStyles[id as keyof typeof projectsStyles]
 
   return (
-    <FlexContainer gap='40px' align='center' direction={reverse ? 'row-reverse' : 'row'}>
+    <StyledRoot $reverse={reverse}>
       {showcaseUrl && (
         <StyledShowcaseImage
           src={`https:${showcaseUrl}`}
@@ -64,9 +63,9 @@ const ProjectDescriptionItem: React.FC<ComponentProps> = ({ data, reverse }) => 
         />
       )}
       <StyledContainer>
-        <FlexContainer gap='20px' align='center'>
+        <StyledHeader>
           <HighlightTitleComponent
-            fontSize='2rem'
+            fontSize='clamp(1.1rem, 3vw, 2rem)'
             color={style?.textColor}
             title={name ?? ''}
             highlightString={style?.hihglight ?? ''}
@@ -82,14 +81,14 @@ const ProjectDescriptionItem: React.FC<ComponentProps> = ({ data, reverse }) => 
               Visit website
             </a>
           </StyledLinks>
-        </FlexContainer>
+        </StyledHeader>
 
-        <ParagraphComponent color={style?.textColor} fontSize='0.9rem' fontWeight={500} margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>
+        <ParagraphComponent color={style?.textColor} fontSize='clamp(0.75rem, 1.6vw, 0.9rem)' fontWeight={500} margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>
           {description}
         </ParagraphComponent>
 
       </StyledContainer>
-    </FlexContainer>
+    </StyledRoot>
   )
 }
 

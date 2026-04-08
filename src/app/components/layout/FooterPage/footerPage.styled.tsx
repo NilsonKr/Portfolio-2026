@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { media } from '@/app/utils/theme'
+
 export const StyledFooterContainer = styled.footer`
   position: absolute;
   bottom: 0;
@@ -11,5 +13,13 @@ export const StyledFooterContainer = styled.footer`
 
   & a:hover {
     text-decoration: underline;
+  }
+
+  ${media.tablet} {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 20px;
+    margin-bottom: 12px;
+    text-align: center;
   }
 `
