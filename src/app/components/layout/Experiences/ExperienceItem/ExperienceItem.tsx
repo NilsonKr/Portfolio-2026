@@ -1,7 +1,7 @@
 import { MotionValue } from 'motion/react'
 
 import { StyledContainer, StyledYear, StyledDateRangeContainer, StyledOrbBackground } from './experienceItem.styled'
-import { StyledAnimatedTechStack, AnimatedDateRange } from './experienceItem.animate'
+import { withOrbBackgroundAnimation } from './experienceItem.animate'
 
 import SubtitleComponent from '@/app/components/SubtitleComponent'
 import ParagraphComponent from '@/app/components/ParagraphComponent'
@@ -12,7 +12,7 @@ import { ExperienceData } from '@/app/types/data'
 type ComponentProps = {
   data: ExperienceData
   main: boolean
-  scrollYProgress?: MotionValue<number>
+  scrollYProgress: MotionValue<number>
 }
 
 const glowBackgrounds = {
@@ -23,6 +23,12 @@ const glowBackgrounds = {
   )`,
   2: `radial-gradient( circle farthest-corner at 10% 20%,  rgba(240,139,139,1) 0%, rgba(243,252,166,1) 90% )`,
   3: `radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(143,232,255,0.6) 21.9%, rgba(209,243,251,0.6) 52.9% )`,
+}
+
+const animateOrbBackgrounds = {
+  1: withOrbBackgroundAnimation([0.12, 0.14]),
+  2: withOrbBackgroundAnimation([0.22, 0.24]),
+  3: withOrbBackgroundAnimation([0.32, 0.34]),
 }
 
 const ExperienceItem: React.FC<ComponentProps> = ({ data, main, scrollYProgress }) => {
@@ -40,9 +46,11 @@ const ExperienceItem: React.FC<ComponentProps> = ({ data, main, scrollYProgress 
     year: 'numeric',
   })}`.split(' ')
 
+  const AnimatedOrbBackground = animateOrbBackgrounds[id as keyof typeof animateOrbBackgrounds]
+
   return (
     <StyledContainer>
-      <StyledOrbBackground background={glowBackgrounds[id as keyof typeof glowBackgrounds]} />
+      <AnimatedOrbBackground scrollYProgress={scrollYProgress} background={glowBackgrounds[id as keyof typeof glowBackgrounds]} />
 
 
       <StyledDateRangeContainer>

@@ -1,18 +1,33 @@
-import { motion } from 'framer-motion'
+import { motion, useTransform, MotionValue } from 'framer-motion'
 import { IoMdArrowRoundUp } from 'react-icons/io'
 
-import { StyledContainer } from './heroFooter.styled'
+import { StyledContainer, MotionWrapper } from './heroFooter.styled'
 
-const HeroFooter = () => {
+type ComponentProps = {
+  scrollYprogress: MotionValue<number>
+}
+
+const HeroFooter: React.FC<ComponentProps> = ({ scrollYprogress }) => {
+  const opacity = useTransform(scrollYprogress, [0, 0.5], [1, 0])
+
   return (
-    <StyledContainer justify='center' align='center'>
-      <motion.div
-        animate={{ y: [0, -14, 0, 0, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeOut' }}
-      >
-        <IoMdArrowRoundUp size={24} color='var(--color-text)' />
-      </motion.div>
-    </StyledContainer>
+    <MotionWrapper style={{ opacity }}>
+      <StyledContainer justify='center' align='center'>
+        <motion.div
+          animate={{ y: [0, -14, 0, 0, 0], opacity: [0, 1] }}
+          transition={{
+            y: {
+              duration: 3, repeat: Infinity, ease: 'easeOut',
+            },
+            opacity: {
+              duration: 0.7, delay: 7, ease: 'easeOut',
+            }
+          }}
+        >
+          <IoMdArrowRoundUp size={24} color='var(--color-text)' />
+        </motion.div>
+      </StyledContainer>
+    </MotionWrapper>
   )
 }
 

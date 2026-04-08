@@ -27,6 +27,7 @@ export type FlexContainerProps = {
   className?: string
   id?: string
   as?: React.ElementType
+  style?: React.CSSProperties
 }
 
 const FlexContainer: React.FC<FlexContainerProps> = ({
@@ -53,7 +54,8 @@ const FlexContainer: React.FC<FlexContainerProps> = ({
   overflow,
   className,
   id,
-  as
+  as,
+  style
 }) => {
   return (
     <StyledFlex
@@ -80,6 +82,7 @@ const FlexContainer: React.FC<FlexContainerProps> = ({
       className={className}
       id={id}
       as={as}
+      style={{ ...style }}
     >
       {children}
     </StyledFlex>

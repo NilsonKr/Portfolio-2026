@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useContext } from 'react'
+import { useContext } from 'react'
 
-import { useScroll } from 'motion/react'
+import { MotionValue } from 'motion/react'
 
 import { StyledExperiencesContainer, StyledStickyContainer, StyledTopTitle, StyledBottomTitle, StyledExperiencesList } from "./experiences.styled"
 
@@ -53,14 +53,13 @@ const animatedExperiences = {
   }),
 }
 
-const Experiences = () => {
-  const { experiences } = useContext(ContentfulContext)
-  const containerRef = useRef<HTMLDivElement>(null)
+type ComponentProps = {
+  containerRef: React.RefObject<HTMLDivElement | null>
+  scrollYProgress: MotionValue<number>
+}
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['10% end', 'end end'],
-  })
+const Experiences: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) => {
+  const { experiences } = useContext(ContentfulContext)
 
   return (
     <StyledExperiencesContainer ref={containerRef}>

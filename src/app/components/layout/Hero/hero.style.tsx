@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 export const HeroBackgroundContainer = styled.div`
   position: relative;
@@ -8,7 +9,11 @@ export const HeroBackgroundContainer = styled.div`
   justify-content: center;
   align-items: center;
 `
-export const HeroTextContainer = styled.div`
+export const HeroTextContainer = styled(motion.div).attrs(() => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.8, ease: 'easeOut', delay: 1 },
+}))`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,4 +31,50 @@ export const HeroTextContainer = styled.div`
   );
   mask-composite: intersect;
   -webkit-mask-composite: destination-in;
+`
+
+export const StyledTitlePerspective = styled.div`
+  perspective: 900px;
+`
+
+export const StyledTitle = styled(motion.div).attrs(() => ({
+  initial: { rotateX: 60, rotateY: -5, opacity: 0 },
+  animate: { rotateX: 0, rotateY: 0, opacity: 1 },
+  transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94], delay: 2 },
+}))`
+  transform-origin: top center;
+  transform-style: preserve-3d;
+`
+
+export const StyledRole = styled(motion.div).attrs(() => ({
+  initial: { x: -60, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  transition: { duration: 0.6, ease: 'easeOut', delay: 3 },
+}))`
+
+`
+
+export const StyledExperience = styled(motion.div).attrs(() => ({
+  initial: { y: 40, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  transition: { duration: 0.6, ease: 'easeOut', delay: 4.5 },
+}))`
+
+`
+
+export const StyledDescription = styled(motion.div).attrs(() => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.8, ease: 'easeOut', delay: 4.8 },
+}))`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+
+  & > p {
+    font-size: 1.1rem;
+    color: #404040;
+    text-shadow: 0px 5px 8px rgba(0, 0, 0, 0.21);
+  }
 `
