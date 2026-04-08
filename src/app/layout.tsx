@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from "@vercel/analytics/next"
 import StyledComponentsRegistry from '@/app/layouts/StyledComponentsRegistry'
-import ContentfulProvider from '@/app/context/contentful'
+
 import GlobalStyles from '@/app/GlobalStyles'
 import { generalSans, satoshi, clashDisplay, array } from '@/app/fonts'
+
+import ContentfulProvider from '@/app/context/contentful'
+
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -25,6 +30,8 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <ContentfulProvider>
+            <SpeedInsights />
+            <Analytics />
             <GlobalStyles />
             {children}
           </ContentfulProvider>
