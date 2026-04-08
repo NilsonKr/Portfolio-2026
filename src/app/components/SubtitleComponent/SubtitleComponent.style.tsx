@@ -7,19 +7,22 @@ type StyledProps = {
   $lineHeight?: string
   $letterSpacing?: string
   $margin?: string
+  $maxWidth?: string
   $zIndex?: number
   $textShadow?: string
   $gradient?: string
+  $fontFamily?: string
 }
 
 export const StyledSubtitle = styled.h2<StyledProps>`
-  font-family: 'Satoshi', sans-serif;
+  font-family: ${({ $fontFamily }) => $fontFamily ?? 'var(--font-satoshi)'};
   font-size: ${({ $fontSize }) => $fontSize ?? '2.5rem'};
   font-weight: ${({ $fontWeight }) => $fontWeight ?? 600};
   color: ${({ $color }) => $color ?? 'var(--color-title)'};
   margin: ${({ $margin }) => $margin ?? '0'};
   line-height: ${({ $lineHeight }) => $lineHeight ?? '1.5'};
   letter-spacing: ${({ $letterSpacing }) => $letterSpacing ?? 'normal'};
+  max-width: ${({ $maxWidth }) => $maxWidth ?? 'unset'};
   z-index: ${({ $zIndex }) => $zIndex ?? 1};
   text-shadow: ${({ $textShadow }) => $textShadow ?? 'unset'};
   ${({ $gradient }) => $gradient && `

@@ -1,4 +1,4 @@
-import { StyledGlassContainer } from './GlassContainer.style'
+import { StyledGlassContainer, StyledGlassWrapper, StyledFloatingShadow } from './GlassContainer.style'
 
 export type GlassContainerProps = {
   children?: React.ReactNode
@@ -17,6 +17,9 @@ export type GlassContainerProps = {
   id?: string
   as?: React.ElementType
   cursor?: string
+  style?: React.CSSProperties
+  floatingShadow?: boolean
+  floatingAnimation?: boolean
   onClick?: () => void
 }
 
@@ -38,29 +41,36 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
   id,
   as,
   cursor,
+  style,
+  floatingShadow,
+  floatingAnimation,
   onClick,
 }) => {
   return (
-    <StyledGlassContainer
-      width={width}
-      height={height}
-      minWidth={minWidth}
-      minHeight={minHeight}
-      maxWidth={maxWidth}
-      maxHeight={maxHeight}
-      padding={padding}
-      margin={margin}
-      $borderRadius={borderRadius}
-      blur={blur}
-      shadowSize={shadowSize}
-      className={className}
-      id={id}
-      as={as}
-      $cursor={cursor}
-      onClick={onClick}
-    >
-      {children}
-    </StyledGlassContainer>
+    <StyledGlassWrapper $floatingAnimation={floatingAnimation}>
+      <StyledGlassContainer
+        width={width}
+        height={height}
+        minWidth={minWidth}
+        minHeight={minHeight}
+        maxWidth={maxWidth}
+        maxHeight={maxHeight}
+        padding={padding}
+        margin={margin}
+        $borderRadius={borderRadius}
+        blur={blur}
+        shadowSize={shadowSize}
+        className={className}
+        id={id}
+        as={as}
+        $cursor={cursor}
+        style={style}
+        onClick={onClick}
+      >
+        {children}
+      </StyledGlassContainer>
+      {floatingShadow && <StyledFloatingShadow />}
+    </StyledGlassWrapper>
   )
 }
 

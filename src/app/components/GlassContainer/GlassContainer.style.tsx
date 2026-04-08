@@ -1,5 +1,10 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { GlassContainerProps } from './GlassContainer'
+
+const float = keyframes`
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+`
 
 type StyledProps = {
   width?: string
@@ -18,6 +23,27 @@ type StyledProps = {
   as?: React.ElementType
   $cursor?: string
 }
+
+export const StyledGlassWrapper = styled.div<{ $floatingAnimation?: boolean }>`
+  position: relative;
+  display: inline-flex;
+  ${({ $floatingAnimation }) => $floatingAnimation && css`
+    animation: ${float} 3s ease-in-out infinite;
+  `}
+`
+
+export const StyledFloatingShadow = styled.div`
+  position: absolute;
+  bottom: -35px;
+  left: 10%;
+  width: 80%;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.22) 0%, transparent 70%);
+  filter: blur(5px);
+  pointer-events: none;
+  z-index: -1;
+`
 
 export const StyledGlassContainer = styled.div<StyledProps>`
   display: flex;
@@ -108,4 +134,5 @@ export const StyledGlassContainer = styled.div<StyledProps>`
     pointer-events: none;
     z-index: 2;
   }
+
 `

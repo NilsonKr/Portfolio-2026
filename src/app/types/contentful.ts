@@ -1,4 +1,5 @@
-import type {  Entry, EntryFieldTypes, EntrySkeletonType } from 'contentful'
+import type { Entry, EntryFieldTypes, EntrySkeletonType } from 'contentful'
+import { ShowcaseAsset } from './data'
 
 // ─── About Me ────────────────────────────────────────────────────────────────
 
@@ -8,6 +9,7 @@ export interface TypeAboutMeFields {
   linkedIn?: EntryFieldTypes.Symbol
   github?: EntryFieldTypes.Symbol
   getonboard?: EntryFieldTypes.Symbol
+  cv?: EntryFieldTypes.AssetLink
 }
 
 export interface TypeAboutMeSkeleton extends EntrySkeletonType {
@@ -15,7 +17,7 @@ export interface TypeAboutMeSkeleton extends EntrySkeletonType {
   contentTypeId: 'aboutMe'
 }
 
-export type TypeAboutMe = Entry<TypeAboutMeSkeleton>
+export type TypeAboutMe = Entry<TypeAboutMeSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
 
 // ─── Experiences ─────────────────────────────────────────────────────────────
 
