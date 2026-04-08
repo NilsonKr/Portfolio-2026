@@ -1,4 +1,4 @@
-import { MotionValue } from 'motion/react'
+import type { MotionValue } from 'motion/react'
 
 import { StyledContainer, StyledYear, StyledDateRangeContainer, StyledOrbBackground } from './experienceItem.styled'
 import { withOrbBackgroundAnimation } from './experienceItem.animate'

@@ -1,4 +1,4 @@
-import { MotionValue } from 'motion/react'
+import type { MotionValue } from 'motion/react'
 
 import { StyledContainer } from './projectItem.styled'
 
@@ -46,7 +46,7 @@ const ProjectItem: React.FC<ComponentProps> = ({ data, reverse, scrollYProgress 
   const AnimatedDescription = animatedDescriptionItems[id as keyof typeof animatedDescriptionItems]
 
   return (
-    <StyledContainer background={color as string}>
+    <StyledContainer $background={color as string}>
       {scrollYProgress && (
         <AnimatedDescription data={data} reverse={reverse} scrollYProgress={scrollYProgress} />
       )}

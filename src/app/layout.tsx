@@ -2,11 +2,12 @@ import type { Metadata } from 'next'
 import StyledComponentsRegistry from '@/app/layouts/StyledComponentsRegistry'
 import ContentfulProvider from '@/app/context/contentful'
 import GlobalStyles from '@/app/GlobalStyles'
+import { generalSans, satoshi, clashDisplay, array } from '@/app/fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'Personal portfolio',
+  title: 'Nilson Diaz',
+  description: 'Nilson Diaz personal portfolio',
 }
 
 export default function RootLayout({
@@ -15,13 +16,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${generalSans.variable} ${satoshi.variable} ${clashDisplay.variable} ${array.variable}`}>
       <head>
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=satoshi@400,500,700&f[]=clash-display@400,500,600,700&f[]=array@400&display=swap"
-        />
+        <link rel="preconnect" href="https://images.ctfassets.net" />
+        <link rel="preconnect" href="https://cdn.contentful.com" />
       </head>
+
       <body>
         <StyledComponentsRegistry>
           <ContentfulProvider>

@@ -1,7 +1,6 @@
-'use client'
-
-import { createContext, useEffect, useState } from 'react'
 import { createClient } from 'contentful'
+
+import ContentfulContextProvider from './contentfulClient'
 
 import type {
   ContentfulData,
@@ -10,54 +9,33 @@ import type {
   TypePersonalProjectsSkeleton,
 } from '@/app/types/contentful'
 
+// ─── Contentful Client ────────────────────────────────────────────────────────
+
 const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID!,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN!,
+  space: process.env.CONTENTFUL_SPACE_ID!,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
 })
 
-// ─── Context ──────────────────────────────────────────────────────────────────
-
-export const ContentfulContext = createContext<ContentfulData>({
-  aboutMe: null,
-  experiences: [],
-  personalProjects: [],
-  loading: true,
-})
-
-// ─── Provider ─────────────────────────────────────────────────────────────────
+// ─── Server Provider ──────────────────────────────────────────────────────────
 
 type ContentfulProviderProps = {
   children: React.ReactNode
 }
 
-const ContentfulProvider: React.FC<ContentfulProviderProps> = ({ children }) => {
-  const [aboutMe, setAboutMe] = useState<ContentfulData['aboutMe']>(null)
-  const [experiences, setExperiences] = useState<ContentfulData['experiences']>([])
-  const [personalProjects, setPersonalProjects] = useState<ContentfulData['personalProjects']>([])
-  const [loading, setLoading] = useState(true)
+const ContentfulProvider = async ({ children }: ContentfulProviderProps) => {
+  const [aboutMeRes, experiencesRes, projectsRes] = await Promise.all([
+    client.withoutUnresolvableLinks.getEntries<TypeAboutMeSkeleton>({ content_type: 'aboutMe', limit: 1, include: 2 }),
+    client.getEntries<TypeExperiencesSkeleton>({ content_type: 'experiences', order: ['fields.id'], include: 2 }),
+    client.getEntries<TypePersonalProjectsSkeleton>({ content_type: 'personalProjects', order: ['fields.id'], include: 2 }),
+  ])
 
-  useEffect(() => {
-    async function fetchAll() {
-      const [aboutMeRes, experiencesRes, projectsRes] = await Promise.all([
-        client.getEntries<TypeAboutMeSkeleton>({ content_type: 'aboutMe', limit: 1, include: 2 }),
-        client.getEntries<TypeExperiencesSkeleton>({ content_type: 'experiences', order: ['fields.id'], include: 2 }),
-        client.getEntries<TypePersonalProjectsSkeleton>({ content_type: 'personalProjects', order: ['fields.id'], include: 2 }),
-      ])
+  const data: Omit<ContentfulData, 'loading'> = {
+    aboutMe: aboutMeRes.items[0] ?? null,
+    experiences: experiencesRes.items,
+    personalProjects: projectsRes.items,
+  }
 
-      setAboutMe(aboutMeRes.items[0] ?? null)
-      setExperiences(experiencesRes.items)
-      setPersonalProjects(projectsRes.items)
-      setLoading(false)
-    }
-
-    fetchAll()
-  }, [])
-
-  return (
-    <ContentfulContext.Provider value={{ aboutMe, experiences, personalProjects, loading }}>
-      {children}
-    </ContentfulContext.Provider>
-  )
+  return <ContentfulContextProvider data={data}>{children}</ContentfulContextProvider>
 }
 
 export default ContentfulProvider

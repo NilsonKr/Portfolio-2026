@@ -3,7 +3,7 @@ import { useContext } from 'react'
 
 import { StyledFooterContainer } from './footerPage.styled'
 
-import { ContentfulContext } from '@/app/context/contentful'
+import { ContentfulContext } from '@/app/context/contentfulClient'
 
 import ParagraphComponent from '../../ParagraphComponent'
 

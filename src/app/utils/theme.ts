@@ -10,10 +10,10 @@ export const colors = {
 } as const
 
 export const fonts = {
-  generalSans: "'General Sans', sans-serif",
-  satoshi: "'Satoshi', sans-serif",
-  clash: "'Clash Display', serif",
-  array: "'Array', sans-serif",
+  generalSans: 'var(--font-general-sans), sans-serif',
+  satoshi: 'var(--font-satoshi), sans-serif',
+  clash: 'var(--font-clash), serif',
+  array: 'var(--font-array), sans-serif',
 } as const
 
 export const breakpoints = {

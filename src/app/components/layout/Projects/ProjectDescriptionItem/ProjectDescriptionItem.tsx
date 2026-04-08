@@ -71,7 +71,7 @@ const ProjectDescriptionItem: React.FC<ComponentProps> = ({ data, reverse }) => 
             highlightString={style?.hihglight ?? ''}
             highlightColor={style?.highlightColor ?? 'inherit'}
           />
-          <StyledLinks background={style.stackGradient} filter={style.stackShadow}>
+          <StyledLinks $background={style.stackGradient} $filter={style.stackShadow}>
             <FaGithub size={26} color={style.textColor} />
             <a href={(links as string[])[1]} style={{ color: style.textColor, marginRight: 10 }} target='_blank'>
               See the code

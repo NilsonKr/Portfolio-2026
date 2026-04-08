@@ -42,14 +42,14 @@ export const StyledDateRangeContainer = styled.div`
   }
 `
 
-export const StyledOrbBackground = styled.div<{ background: string }>`
+export const StyledOrbBackground = styled.div<{ $background: string }>`
   position: absolute;
   top: 120px;
   left: 50px;
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background-image: ${({ background }) => background};
+  background-image: ${({ $background }) => $background};
   filter: blur(48px);
   opacity: 0.3;
   z-index: -1;

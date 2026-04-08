@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { colors, fonts } from '@/app/utils/theme'
+import { colors } from '@/app/utils/theme'
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -11,12 +11,6 @@ const GlobalStyles = createGlobalStyle`
     --color-auxiliar: ${colors.auxiliar};
     --color-auxiliar-light: ${colors.auxiliarLight};
     --color-secondary: ${colors.secondary};
-
-    /* Fonts */
-    --font-general-sans: ${fonts.generalSans};
-    --font-satoshi: ${fonts.satoshi};
-    --font-clash: ${fonts.clash};
-    --font-array: ${fonts.array};
   }
 
   *, *::before, *::after {

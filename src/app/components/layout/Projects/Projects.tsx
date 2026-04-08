@@ -1,11 +1,11 @@
 'use client'
 
 import { useRef, useContext } from 'react'
-import { useScroll, MotionValue } from 'motion/react'
+import { useScroll, type MotionValue } from 'motion/react'
 
 import { StyledProjectsContainer, StyledStickyContainer, StyledTitleContainer, StyledTitleComponent } from './projects.styled'
 
-import { ContentfulContext } from '../../../context/contentful'
+import { ContentfulContext } from '../../../context/contentfulClient'
 
 import { withProjectItemAnimation, withProjectsTitleAnimation } from './projects.animated'
 

@@ -1,4 +1,4 @@
-import { motion, useTransform, MotionValue } from 'framer-motion'
+import { motion, useTransform, type MotionValue } from 'motion/react'
 import { IoMdArrowRoundUp } from 'react-icons/io'
 
 import { StyledContainer, MotionWrapper } from './heroFooter.styled'
