@@ -15,7 +15,7 @@ const Hero: React.FC<ComponentProps> = ({ containerRef }) => {
       <HeroTextContainer>
         <StyledTitlePerspective>
           <StyledTitle>
-            <TitleComponent fontSize='clamp(2.2rem, 7vw, 4.5rem)' zIndex={100} textShadow='0px 10px 20px rgba(0, 0, 0, 0.6)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
+            <TitleComponent fontWeight={700} fontSize='clamp(2.2rem, 7vw, 4.5rem)' zIndex={100} textShadow='0px 10px 20px rgba(0, 0, 0, 0.6)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
               Hi! I'm Nilson Diaz
             </TitleComponent>
           </StyledTitle>
