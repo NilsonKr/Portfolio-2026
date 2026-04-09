@@ -1,9 +1,7 @@
 import styled from 'styled-components'
+import { media } from '@/app/utils/theme'
 
-type StyledProps = {
-}
-
-export const StyledDotsBackground = styled.div<StyledProps>`
+export const StyledDotsBackground = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
@@ -23,4 +21,8 @@ export const StyledDotsBackground = styled.div<StyledProps>`
   border-radius:50% ;
   overflow: hidden;
   opacity: 0.7;
+
+  ${media.mobile} {
+    display: none;
+  }
 `

@@ -42,10 +42,10 @@ const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) =>
                 alt={'Nilson Diaz'}
                 width={260}
                 height={240}
-                priority
                 style={{ borderRadius: '8px', cursor: 'pointer' }}
                 onMouseEnter={() => setPictureHovered(true)}
                 onMouseLeave={() => setPictureHovered(false)}
+                loading='lazy'
               />
             </PictureAnimated>
           }

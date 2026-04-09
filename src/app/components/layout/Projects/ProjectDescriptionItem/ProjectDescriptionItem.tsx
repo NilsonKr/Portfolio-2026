@@ -59,7 +59,7 @@ const ProjectDescriptionItem: React.FC<ComponentProps> = ({ data, reverse }) => 
           alt={showcase![0]?.fields?.title ?? name ?? ''}
           width={300}
           height={200}
-          priority
+          loading='lazy'
         />
       )}
       <StyledContainer>

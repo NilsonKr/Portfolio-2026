@@ -8,8 +8,8 @@ import { Wrapper, StyledBackground, StyledNoiseBackground } from './page.style'
 import HeroHeader from './components/layout/HeroHeader'
 import HeroFooter from './components/layout/HeroFooter'
 import Hero from './components/layout/Hero'
-import DotsBackground from './components/DotsBackground'
 
+const DotsBackgroundModule = dynamic(() => import('./components/DotsBackground'))
 const ExperiencesModule = dynamic(() => import('./components/layout/Experiences'))
 const ProjectsModule = dynamic(() => import('./components/layout/Projects'))
 const AboutMeModule = dynamic(() => import('./components/layout/AboutMe'))
@@ -51,7 +51,7 @@ export default function Home() {
       <StyledNoiseBackground />
 
       <HeroHeader />
-      <DotsBackground />
+      <DotsBackgroundModule />
       <Hero containerRef={heroRef} />
       <HeroFooter scrollYprogress={heroExitProgress} />
 
