@@ -65,7 +65,7 @@ const ProjectDescriptionItem: React.FC<ComponentProps> = ({ data, reverse }) => 
       <StyledContainer>
         <StyledHeader>
           <HighlightTitleComponent
-            fontSize='clamp(1.1rem, 3vw, 2rem)'
+            fontSize='clamp(1.1rem, 2vw, 3rem)'
             color={style?.textColor}
             title={name ?? ''}
             highlightString={style?.hihglight ?? ''}
@@ -83,7 +83,7 @@ const ProjectDescriptionItem: React.FC<ComponentProps> = ({ data, reverse }) => 
           </StyledLinks>
         </StyledHeader>
 
-        <ParagraphComponent color={style?.textColor} fontSize='clamp(0.75rem, 1.6vw, 0.9rem)' fontWeight={500} margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>
+        <ParagraphComponent color={style?.textColor} fontSize='clamp(0.75rem, 1vw, 1.4rem)' fontWeight={500} margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>
           {description}
         </ParagraphComponent>
 

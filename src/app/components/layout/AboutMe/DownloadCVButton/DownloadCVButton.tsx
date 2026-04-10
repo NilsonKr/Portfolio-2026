@@ -35,7 +35,7 @@ const DownloadCVButton: React.FC<ComponentProps> = ({ cvUrl, fileName = 'Nilson_
       aria-label='Download updated CV'
       aria-disabled={!cvUrl}
     >
-      <ParagraphComponent fontSize='1.1rem' fontWeight={600}>
+      <ParagraphComponent fontSize='clamp(1.1rem, 1.2vw, 1.6rem)' fontWeight={600}>
         <span style={{ marginRight: 15 }}>[</span>
         <IoMdDownload size={24} style={{ marginRight: 10, transform: 'translateY(7px)' }} />
         Download updated CV

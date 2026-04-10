@@ -10,6 +10,11 @@ export const StyledSaluteHand = styled.span`
   display: inline-block;
   transform-origin: bottom center;
   z-index: -1;
+
+  ${media.desktopXl} {
+    font-size: 2.2rem;
+    top: -22px;
+  }
 `
 
 export const StyledAboutMeContainer = styled.div`
@@ -42,6 +47,10 @@ export const StyledLayout = styled.div`
   height: 100%;
   max-width: 900px;
   margin: 0 auto;
+
+  ${media.desktopXl} {
+    max-width: 1400px;
+  }
 
   & > *:nth-child(1) {
     grid-column: 1;

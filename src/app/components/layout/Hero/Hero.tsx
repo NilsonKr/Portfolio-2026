@@ -15,18 +15,18 @@ const Hero: React.FC<ComponentProps> = ({ containerRef }) => {
       <HeroTextContainer>
         <StyledTitlePerspective>
           <StyledTitle>
-            <TitleComponent fontWeight={700} fontSize='clamp(2.2rem, 7vw, 4.5rem)' zIndex={100} textShadow='0px 10px 20px rgba(0, 0, 0, 0.6)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
+            <TitleComponent fontWeight={700} fontSize='clamp(2.2rem, 5.5vw, 7.5rem)' zIndex={100} textShadow='0px 10px 15px rgba(0, 0, 0, 0.5)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
               Hi! I'm Nilson Diaz
             </TitleComponent>
           </StyledTitle>
         </StyledTitlePerspective>
         <StyledRole>
-          <SubtitleComponent fontSize='clamp(1.3rem, 3.5vw, 2.5rem)' color='#404040' textShadow='0px 5px 10px rgba(0, 0, 0, 0.2)'>
+          <SubtitleComponent fontSize='clamp(1.3rem, 2.8vw, 5.5rem)' color='#404040' textShadow='0px 5px 10px rgba(0, 0, 0, 0.2)'>
             Frontend / Full-stack engineer
           </SubtitleComponent>
         </StyledRole>
         <StyledExperience>
-          <ParagraphComponent fontSize='clamp(1.05rem, 2.4vw, 1.5rem)' color='#000' fontWeight='800' margin='30px 0 0'>
+          <ParagraphComponent fontSize='clamp(1.05rem, 2vw, 2.8rem)' color='#000' fontWeight='800' margin='30px 0 0'>
             5 years of <span style={{
               background: 'radial-gradient( circle farthest-corner at 32.7% 82.7%,  rgba(173,0,171,1) 8.3%, rgba(15,51,92,1) 79.4% )',
               WebkitBackgroundClip: 'text',
@@ -37,16 +37,16 @@ const Hero: React.FC<ComponentProps> = ({ containerRef }) => {
           </ParagraphComponent>
         </StyledExperience>
         <StyledDescription>
-          <ParagraphComponent>
+          <ParagraphComponent fontSize='clamp(0.95rem, 1.5vw, 3rem)' >
             Building scalable, high-performance, world-class UI/UX products
           </ParagraphComponent>
-          <ParagraphComponent>
+          <ParagraphComponent fontSize='clamp(0.95rem, 1.5vw, 3rem)'>
             experienced on Fintech & B2B
           </ParagraphComponent>
           <GlowBackground >
             <TagComponent
               color='#000'
-              fontSize='clamp(0.9rem, 1.5vw, 1.1rem)'
+              fontSize='clamp(0.9rem, 1.2vw, 2rem)'
               fontWeight={600}
               maxWidth='min(65%, 65ch)'
               textAlign='center'

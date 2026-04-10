@@ -40,6 +40,11 @@ export const StyledTopTitle = styled(SubtitleComponent)`
   line-height: 1;
   opacity: 0.1;
 
+  ${media.desktopXl} {
+    font-size: 12rem;
+    top: -130px;
+  }
+
   ${media.laptop} {
     font-size: 5rem;
     top: -60px;
@@ -61,6 +66,11 @@ export const StyledBottomTitle = styled(SubtitleComponent)`
   font-family: var(--font-clash);
   line-height: 1;
   opacity: 0.5;
+
+  ${media.desktopXl} {
+    font-size: 12rem;
+    bottom: -80px;
+  }
 
   ${media.laptop} {
     font-size: 5rem;

@@ -41,6 +41,9 @@ export const StyledBackground = styled.div`
   height: 100vh;
   z-index: -2;
   background-image: url('/background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   mask-image: linear-gradient(180deg,rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 1) 40%);
   -webkit-mask-image: linear-gradient(180deg,rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 1) 40%);
 
