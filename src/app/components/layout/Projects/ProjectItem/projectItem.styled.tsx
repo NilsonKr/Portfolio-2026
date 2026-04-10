@@ -5,5 +5,6 @@ export const StyledContainer = styled.div<{ $background: string }>`
   justify-content: flex-end;
   align-items: center;
   height: 100%;
+  padding-right: 12px;
   background: ${({ $background }) => $background};
 `

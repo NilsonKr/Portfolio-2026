@@ -11,6 +11,10 @@ export const StyledContainer = styled.div<StyledProps>`
   position: relative;
   max-width: 350px;
 
+  ${media.desktopXl} {
+    max-width: 550px;
+  }
+
   ${media.tablet} {
     max-width: 100%;
     width: 100%;
@@ -24,6 +28,10 @@ export const StyledYear = styled.span<StyledProps>`
   font-family: var(--font-general-sans);
   margin-left: 5px;
 
+  ${media.desktopXl} {
+    font-size: 3.2rem;
+  }
+
   ${media.tablet} {
     font-size: 1.6rem;
   }
@@ -36,6 +44,10 @@ export const StyledDateRangeContainer = styled.div`
   flex-direction: column;
   width: 100%;
   margin-bottom: 30px;
+
+  ${media.desktopXl} {
+    margin-bottom: 40px;
+  }
 
   ${media.tablet} {
     margin-bottom: 18px;
@@ -53,6 +65,11 @@ export const StyledOrbBackground = styled.div<{ $background: string }>`
   filter: blur(48px);
   opacity: 0.3;
   z-index: -1;
+
+  ${media.desktopXl} {
+    width: 420px;
+    height: 420px;
+  }
 
   ${media.tablet} {
     top: 60px;

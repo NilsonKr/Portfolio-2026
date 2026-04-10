@@ -92,9 +92,16 @@ export const StyledDescription = styled(motion.div).attrs(() => ({
   margin-top: 30px;
 
   & > p {
-    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
     color: #404040;
     text-shadow: 0px 5px 8px rgba(0, 0, 0, 0.21);
+  }
+
+  ${media.desktopXl} {
+    margin-top: 40px;
+
+    & > p {
+      font-size: 1.35rem;
+    }
   }
 
   ${media.tablet} {

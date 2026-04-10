@@ -18,6 +18,10 @@ export const StyledRoot = styled.div<{ $reverse?: boolean }>`
 export const StyledContainer = styled.div`
   max-width: 500px;
 
+  ${media.desktopXl} {
+    max-width: 700px;
+  }
+
   ${media.tablet} {
     max-width: 100%;
   }
@@ -42,6 +46,12 @@ export const StyledShowcaseImage = styled(Image)`
     width: 140px;
     height: auto;
   }
+
+   ${media.desktopXl} {
+    width: 400px;
+    height: 310px;
+    max-height: 80%;
+  }
 `
 
 export const StyledLinks = styled.div<{ $background: string; $filter: string }>`
@@ -55,7 +65,7 @@ export const StyledLinks = styled.div<{ $background: string; $filter: string }>`
   & > a {
     text-decoration: none;
     font-family: var(--font-satoshi);
-    font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+    font-size: clamp(0.7rem, 1.2vw, 1.2rem);
   }
 
   & > a:hover {
@@ -74,6 +84,13 @@ export const StyledLinks = styled.div<{ $background: string; $filter: string }>`
     & > svg {
       width: 16px;
       height: 16px;
+    }
+  }
+
+  ${media.desktopXl} {
+    & > svg {
+      width: 38px;
+      height: 38px;
     }
   }
 `

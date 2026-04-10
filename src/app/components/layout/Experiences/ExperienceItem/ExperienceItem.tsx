@@ -54,24 +54,24 @@ const ExperienceItem: React.FC<ComponentProps> = ({ data, main, scrollYProgress 
 
 
       <StyledDateRangeContainer>
-        <ParagraphComponent lineHeight='1'>
+        <ParagraphComponent fontSize='clamp(1rem, 1.1vw, 1.5rem)' lineHeight='1'>
           {toDateMonth} <StyledYear style={{ color: '#000' }}>{toDateDisplay} - </StyledYear>
         </ParagraphComponent>
-        <ParagraphComponent lineHeight='1' >
-          {fromDateMonth} <StyledYear style={{ fontSize: '1.5rem' }}> {fromDateYear}</StyledYear>
+        <ParagraphComponent fontSize='clamp(1rem, 1.1vw, 1.5rem)' lineHeight='1' >
+          {fromDateMonth} <StyledYear style={{ fontSize: 'clamp(1.5rem, 1.8vw, 2.5rem)' }}> {fromDateYear}</StyledYear>
         </ParagraphComponent>
       </StyledDateRangeContainer>
 
-      <SubtitleComponent fontSize='2rem' lineHeight='1.3' fontWeight={600} margin='0 0 10px 0' gradient={main ? 'radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 35% )' : ''}>
+      <SubtitleComponent fontSize='clamp(2rem, 2.2vw, 3.5rem)' lineHeight='1.3' fontWeight={600} margin='0 0 10px 0' gradient={main ? 'radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 35% )' : ''}>
         {role}
       </SubtitleComponent>
 
-      <SubtitleComponent fontSize='1.6rem' color='var(--text-color)' >
+      <SubtitleComponent fontSize='clamp(1.6rem, 1.8vw, 2.8rem)' color='var(--text-color)' >
         {company}
       </SubtitleComponent>
 
 
-      <ParagraphComponent fontSize='0.9rem' maxWidth='90%' margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>
+      <ParagraphComponent fontSize='clamp(0.9rem, 1.1vw, 1.5rem)' maxWidth='90%' margin='10px 0 0' textShadow='0 3px 5px rgba(0,0,0,0.15)'>
         {description}
       </ParagraphComponent>
     </StyledContainer>

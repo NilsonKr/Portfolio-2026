@@ -40,9 +40,9 @@ const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) =>
               <Image
                 src={`https:${showcaseUrl}`}
                 alt={'Nilson Diaz'}
-                width={260}
-                height={240}
-                style={{ borderRadius: '8px', cursor: 'pointer' }}
+                width={360}
+                height={330}
+                style={{ borderRadius: '8px', cursor: 'pointer', width: 'clamp(260px, 20vw, 400px)', height: 'auto' }}
                 onMouseEnter={() => setPictureHovered(true)}
                 onMouseLeave={() => setPictureHovered(false)}
                 loading='lazy'
@@ -55,10 +55,10 @@ const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) =>
               <SaluteHandAnimated scrollYProgress={scrollYProgress} hovering={pictureHovered}>
                 👋
               </SaluteHandAnimated>
-              <SubtitleComponent maxWidth='fit-content' lineHeight='1' fontFamily='var(--font-general-sans)'>A little about me</SubtitleComponent>
+              <SubtitleComponent fontSize='clamp(2.5rem, 2.5vw, 4rem)' maxWidth='fit-content' lineHeight='1' fontFamily='var(--font-general-sans)'>A little about me</SubtitleComponent>
             </div>
             {descriptionParagraphs && descriptionParagraphs.map((description, idx) => (
-              <ParagraphComponent key={idx} margin='12px 0 0' fontSize='0.9rem'>{description}</ParagraphComponent>
+              <ParagraphComponent key={idx} margin='12px 0 0' fontSize='clamp(0.9rem, 1.1vw, 1.6rem)'>{description}</ParagraphComponent>
             ))}
           </DescriptionAnimated>
 
@@ -67,13 +67,13 @@ const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) =>
 
             <FlexContainer gap='18px' margin='30px 0 0' justify='center'>
               <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.github, '_blank')}>
-                <FaGithub size={24} />
+                <FaGithub size={30} />
               </GlassContainer>
               <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.linkedIn, '_blank')} style={{ transform: 'translateY(10px)' }}>
-                <FaLinkedin size={24} />
+                <FaLinkedin size={30} />
               </GlassContainer>
               <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.getonboard, '_blank')}>
-                <Image src='/getonbrd.svg' alt='Get on Board' width={24} height={24} style={{ filter: 'grayscale(100%)' }} />
+                <Image src='/getonbrd.svg' alt='Get on Board' width={30} height={30} style={{ filter: 'grayscale(100%)' }} />
               </GlassContainer>
             </FlexContainer>
           </LinksAnimated>

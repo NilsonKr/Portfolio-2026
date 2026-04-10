@@ -50,15 +50,15 @@ const animatedProjectItems = {
 const animatedTitleParams = {
   'first': {
     entranceTrigger: [0.35, 0.55],
-    entranceX: ['120%', '0%'],
+    entranceX: ['150%', '0%'],
     exitTrigger: [0, 0.3],
-    exitX: ['0%', '120%'],
+    exitX: ['0%', '150%'],
   },
   'second': {
     entranceTrigger: [0.45, 0.65],
-    entranceX: ['-120%', '0%'],
+    entranceX: ['-160%', '0%'],
     exitTrigger: [0.05, 0.3],
-    exitX: ['0%', '-120%'],
+    exitX: ['0%', '-160%'],
   }
 }
 
