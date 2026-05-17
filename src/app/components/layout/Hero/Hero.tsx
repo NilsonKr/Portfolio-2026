@@ -1,4 +1,4 @@
-import { HeroBackgroundContainer, HeroTextContainer, StyledTitle, StyledTitlePerspective, StyledRole, StyledExperience, StyledDescription } from './hero.style'
+import { HeroBackgroundContainer, HeroTextContainer, StyledTitle, StyledRole, StyledExperience, StyledDescription } from './hero.style'
 
 import TitleComponent from '../../TitleComponent'
 import SubtitleComponent from '../../SubtitleComponent'
@@ -13,13 +13,11 @@ const Hero: React.FC<ComponentProps> = ({ containerRef }) => {
   return (
     <HeroBackgroundContainer ref={containerRef}>
       <HeroTextContainer>
-        <StyledTitlePerspective>
-          <StyledTitle>
-            <TitleComponent fontWeight={700} fontSize='clamp(2.2rem, 5.5vw, 7.5rem)' zIndex={100} textShadow='0px 10px 15px rgba(0, 0, 0, 0.5)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
-              Hi! I'm Nilson Diaz
-            </TitleComponent>
-          </StyledTitle>
-        </StyledTitlePerspective>
+        <StyledTitle>
+          <TitleComponent fontWeight={700} fontSize='clamp(2.2rem, 5.5vw, 7.5rem)' zIndex={100} textShadow='0px 10px 15px rgba(0, 0, 0, 0.5)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>
+            Hi! I'm Nilson Diaz
+          </TitleComponent>
+        </StyledTitle>
         <StyledRole>
           <SubtitleComponent fontSize='clamp(1.3rem, 2.8vw, 5.5rem)' color='#404040' textShadow='0px 5px 10px rgba(0, 0, 0, 0.2)'>
             Frontend / Full-stack engineer
@@ -41,18 +39,18 @@ const Hero: React.FC<ComponentProps> = ({ containerRef }) => {
             Building scalable, high-performance, world-class UI/UX products
           </ParagraphComponent>
           <ParagraphComponent fontSize='clamp(0.95rem, 1.5vw, 3rem)'>
-            experienced on Fintech & B2B
+            worked on Fintech & B2B
           </ParagraphComponent>
           <GlowBackground >
             <TagComponent
               color='#000'
               fontSize='clamp(0.9rem, 1.2vw, 2rem)'
               fontWeight={600}
-              maxWidth='min(65%, 65ch)'
+              maxWidth='min(65%, 70ch)'
               textAlign='center'
               textShadow='0px 5px 8px rgba(0, 0, 0, 0.15)'
             >
-              JavaScript - TypeScript - React.js - Figma - Next.js - Node.js  Web3 - Python - SQL - Claude Code
+              TypeScript - React.js - Figma - Next.js - Node.js - Python  Docker - PostgreSQL - Claude Code
             </TagComponent>
           </GlowBackground>
         </StyledDescription>
