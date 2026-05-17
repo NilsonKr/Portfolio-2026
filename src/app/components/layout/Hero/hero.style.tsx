@@ -18,7 +18,7 @@ export const HeroBackgroundContainer = styled.div`
 export const HeroTextContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.8, ease: 'easeOut', delay: 0 },
+  transition: { duration: 0.8, ease: 'easeOut', },
 }))`
   display: flex;
   flex-direction: column;
@@ -55,14 +55,14 @@ export const HeroTextContainer = styled(motion.div).attrs(() => ({
 export const StyledTitle = styled(motion.div).attrs(() => ({
   initial: { translateX: 80, opacity: 0 },
   animate: { translateX: 0, opacity: 1 },
-  transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94], delay: 2 },
+  transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94], delay: 1 },
 }))`
 `
 
 export const StyledRole = styled(motion.div).attrs(() => ({
   initial: { x: -60, opacity: 0 },
   animate: { x: 0, opacity: 1 },
-  transition: { duration: 0.6, ease: 'easeOut', delay: 3 },
+  transition: { duration: 0.6, ease: 'easeOut', delay: 2 },
 }))`
 
 `
@@ -70,7 +70,7 @@ export const StyledRole = styled(motion.div).attrs(() => ({
 export const StyledExperience = styled(motion.div).attrs(() => ({
   initial: { y: 40, opacity: 0 },
   animate: { y: 0, opacity: 1 },
-  transition: { duration: 0.6, ease: 'easeOut', delay: 4.5 },
+  transition: { duration: 0.6, ease: 'easeOut', delay: 3.5 },
 }))`
 
 `
@@ -78,7 +78,7 @@ export const StyledExperience = styled(motion.div).attrs(() => ({
 export const StyledDescription = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.8, ease: 'easeOut', delay: 4.8 },
+  transition: { duration: 0.8, ease: 'easeOut', delay: 4.5 },
 }))`
   display: flex;
   flex-direction: column;

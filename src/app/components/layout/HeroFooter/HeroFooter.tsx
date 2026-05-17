@@ -20,7 +20,7 @@ const HeroFooter: React.FC<ComponentProps> = ({ scrollYprogress }) => {
               duration: 3, repeat: Infinity, ease: 'easeOut',
             },
             opacity: {
-              duration: 0.7, delay: 7, ease: 'easeOut',
+              duration: 0.7, delay: 6, ease: 'easeOut',
             }
           }}
         >
