@@ -1,7 +1,9 @@
 'use client'
 import { useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { useScroll, useInView, useMotionValueEvent } from 'motion/react'
+import { useScroll, useInView, useMotionValueEvent, motion } from 'motion/react'
+
+import useDeferredMount from './hooks/useDeferredMount'
 
 import { Wrapper, StyledBackground, StyledNoiseBackground } from './page.style'
 
@@ -9,7 +11,7 @@ import HeroHeader from './components/layout/HeroHeader'
 import HeroFooter from './components/layout/HeroFooter'
 import Hero from './components/layout/Hero'
 
-const DotsBackgroundModule = dynamic(() => import('./components/DotsBackground'))
+const DotsBackgroundModule = dynamic(() => import('./components/DotsBackground'), { ssr: false })
 const ExperiencesModule = dynamic(() => import('./components/layout/Experiences'))
 const ProjectsModule = dynamic(() => import('./components/layout/Projects'))
 const AboutMeModule = dynamic(() => import('./components/layout/AboutMe'))
@@ -23,6 +25,7 @@ export default function Home() {
 
   const inView = useInView(personalProjectsRef, { margin: '0px 0px -100% 0px' })
   const [aboutMeSettled, setAboutMeSettled] = useState(false)
+  const dotsReady = useDeferredMount()
 
   const { scrollYProgress: heroExitProgress } = useScroll({
     target: experiencesRef,
@@ -50,8 +53,8 @@ export default function Home() {
       <StyledBackground />
       <StyledNoiseBackground />
 
+      {dotsReady && <DotsBackgroundModule />}
       <HeroHeader />
-      <DotsBackgroundModule />
       <Hero containerRef={heroRef} />
       <HeroFooter scrollYprogress={heroExitProgress} />
 

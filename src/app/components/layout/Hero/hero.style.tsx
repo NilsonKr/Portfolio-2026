@@ -18,7 +18,7 @@ export const HeroBackgroundContainer = styled.div`
 export const HeroTextContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.8, ease: 'easeOut', delay: 1 },
+  transition: { duration: 0.8, ease: 'easeOut', delay: 0 },
 }))`
   display: flex;
   flex-direction: column;
@@ -52,17 +52,11 @@ export const HeroTextContainer = styled(motion.div).attrs(() => ({
   
 `
 
-export const StyledTitlePerspective = styled.div`
-  perspective: 900px;
-`
-
 export const StyledTitle = styled(motion.div).attrs(() => ({
-  initial: { rotateX: 60, rotateY: -5, opacity: 0 },
-  animate: { rotateX: 0, rotateY: 0, opacity: 1 },
+  initial: { translateX: 80, opacity: 0 },
+  animate: { translateX: 0, opacity: 1 },
   transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94], delay: 2 },
 }))`
-  transform-origin: top center;
-  transform-style: preserve-3d;
 `
 
 export const StyledRole = styled(motion.div).attrs(() => ({
