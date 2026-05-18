@@ -1,73 +1,29 @@
-'use client'
-import { useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { useScroll, useInView, useMotionValueEvent, motion } from 'motion/react'
 
-import useDeferredMount from './hooks/useDeferredMount'
+import { getContentfulData } from "./lib/contentful"
 
-import { Wrapper, StyledBackground, StyledNoiseBackground } from './page.style'
+import { StyledBackground, StyledNoiseBackground } from './page.style'
 
-import HeroHeader from './components/layout/HeroHeader'
-import HeroFooter from './components/layout/HeroFooter'
-import Hero from './components/layout/Hero'
+import HomeScrollStage from './components/layout/HomeScrollStage'
+import FooterPage from './components/layout/FooterPage'
 
-const DotsBackgroundModule = dynamic(() => import('./components/DotsBackground'), { ssr: false })
-const ExperiencesModule = dynamic(() => import('./components/layout/Experiences'))
-const ProjectsModule = dynamic(() => import('./components/layout/Projects'))
-const AboutMeModule = dynamic(() => import('./components/layout/AboutMe'))
-const FooterPageModule = dynamic(() => import('./components/layout/FooterPage'))
+import { TypeAboutMe, TypeExperiences, TypePersonalProjects } from "./types/contentful"
 
-export default function Home() {
-  const heroRef = useRef(null)
-  const experiencesRef = useRef<HTMLDivElement>(null)
-  const personalProjectsRef = useRef(null)
-  const aboutMeRef = useRef(null)
-
-  const inView = useInView(personalProjectsRef, { margin: '0px 0px -100% 0px' })
-  const [aboutMeSettled, setAboutMeSettled] = useState(false)
-  const dotsReady = useDeferredMount()
-
-  const { scrollYProgress: heroExitProgress } = useScroll({
-    target: experiencesRef,
-    offset: ['start end', '8% end'],
-  })
-
-  const { scrollYProgress: experiencesScrollYProgress } = useScroll({
-    target: experiencesRef,
-    offset: ['10% end', 'end end'],
-  })
-
-  const { scrollYProgress: aboutMeScrollYProgress } = useScroll({
-    target: aboutMeRef,
-    offset: ['start end', 'end end'],
-  })
-
-
-  useMotionValueEvent(aboutMeScrollYProgress, 'change', (value) => {
-    setAboutMeSettled(value >= 0.66)
-  })
+export default async function Home() {
+  const { aboutMe, personalProjects, experiences } = await getContentfulData()
 
   return (<>
+    <StyledBackground />
+    <StyledNoiseBackground />
 
-    <Wrapper>
-      <StyledBackground />
-      <StyledNoiseBackground />
-
-      {dotsReady && <DotsBackgroundModule />}
-      <HeroHeader />
-      <Hero containerRef={heroRef} />
-      <HeroFooter scrollYprogress={heroExitProgress} />
-
-    </Wrapper>
-
-    <ExperiencesModule containerRef={experiencesRef} scrollYProgress={experiencesScrollYProgress} />
-
-    <div style={{ position: 'relative' }} ref={personalProjectsRef}>
-      <ProjectsModule $inView={inView && !aboutMeSettled} aboutMeScrollYProgress={aboutMeScrollYProgress} />
-      <AboutMeModule containerRef={aboutMeRef} scrollYProgress={aboutMeScrollYProgress} />
-      <FooterPageModule />
-    </div>
-
+    <HomeScrollStage
+      aboutMe={aboutMe as TypeAboutMe}
+      personalProjects={personalProjects as TypePersonalProjects[]}
+      experiences={experiences as TypeExperiences[]}
+      footer={<FooterPage aboutMe={aboutMe as TypeAboutMe} />}
+    />
   </>
   )
 }
+
+export const revalidate = 3600

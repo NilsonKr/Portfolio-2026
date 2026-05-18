@@ -1,6 +1,5 @@
 import { createClient } from 'contentful'
-
-import ContentfulContextProvider from './contentfulClient'
+import { cache } from 'react'
 
 import type {
   ContentfulData,
@@ -9,20 +8,13 @@ import type {
   TypePersonalProjectsSkeleton,
 } from '@/app/types/contentful'
 
-// ─── Contentful Client ────────────────────────────────────────────────────────
-
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
 })
 
-// ─── Server Provider ──────────────────────────────────────────────────────────
 
-type ContentfulProviderProps = {
-  children: React.ReactNode
-}
-
-const ContentfulProvider = async ({ children }: ContentfulProviderProps) => {
+export const getContentfulData = cache(async () => {
   const [aboutMeRes, experiencesRes, projectsRes] = await Promise.all([
     client.withoutUnresolvableLinks.getEntries<TypeAboutMeSkeleton>({ content_type: 'aboutMe', limit: 1, include: 2 }),
     client.getEntries<TypeExperiencesSkeleton>({ content_type: 'experiences', order: ['fields.id'], include: 2 }),
@@ -35,7 +27,5 @@ const ContentfulProvider = async ({ children }: ContentfulProviderProps) => {
     personalProjects: projectsRes.items,
   }
 
-  return <ContentfulContextProvider data={data}>{children}</ContentfulContextProvider>
-}
-
-export default ContentfulProvider
+  return data
+})

@@ -1,15 +1,14 @@
-'use client'
-import { useContext } from 'react'
-
 import { StyledFooterContainer } from './footerPage.styled'
-
-import { ContentfulContext } from '@/app/context/contentfulClient'
 
 import ParagraphComponent from '../../ParagraphComponent'
 
-const FooterPage = () => {
-  const { aboutMe } = useContext(ContentfulContext)
+import { TypeAboutMe } from '@/app/types/contentful'
 
+type ComponentProps = {
+  aboutMe: TypeAboutMe
+}
+
+const FooterPage: React.FC<ComponentProps> = ({ aboutMe }) => {
   return (
     <StyledFooterContainer>
       <ParagraphComponent fontSize='.8rem'> Copyright® 2026 <a href={aboutMe?.fields?.github} target='_blank'>Nilson Diaz</a> </ParagraphComponent>

@@ -1,11 +1,11 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   position: relative;
   display: flex;
   gap: 2rem;
   height: 100vh ;
-   justify-content: center;
+  justify-content: center;
   align-items: center;
 `
 

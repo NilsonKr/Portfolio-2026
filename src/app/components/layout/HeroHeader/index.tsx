@@ -1,1 +1,1 @@
-export { default } from './NavbarHero'
+export { default } from './HeroHeader'

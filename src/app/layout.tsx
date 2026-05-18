@@ -6,7 +6,6 @@ import StyledComponentsRegistry from '@/app/layouts/StyledComponentsRegistry'
 import GlobalStyles from '@/app/GlobalStyles'
 import { generalSans, satoshi, clashDisplay, array } from '@/app/fonts'
 
-import ContentfulProvider from '@/app/context/contentful'
 
 import './globals.css'
 
@@ -29,12 +28,10 @@ export default function RootLayout({
 
       <body>
         <StyledComponentsRegistry>
-          <ContentfulProvider>
-            <SpeedInsights />
-            <Analytics />
-            <GlobalStyles />
-            {children}
-          </ContentfulProvider>
+          <SpeedInsights />
+          <Analytics />
+          <GlobalStyles />
+          {children}
         </StyledComponentsRegistry>
       </body>
     </html>
