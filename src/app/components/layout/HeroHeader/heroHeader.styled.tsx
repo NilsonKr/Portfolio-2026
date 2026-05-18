@@ -1,17 +1,20 @@
-import styled from "styled-components";
-import { motion } from "motion/react";
+import styled, { keyframes } from "styled-components";
 
+const entrance = keyframes`
+  100% { transform: translateY(0px); opacity:1; }
+`
 import FlexContainer from "../../FlexContainer";
 
-export const StyledIconsContainer = styled(motion.div).attrs(() => ({
-  initial: { y: 30, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  transition: { duration: 0.6, ease: 'easeOut', delay: 5 },
-}))`
+export const StyledIconsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
+  transform: translateY(30px);
+  opacity:0;
+  animation: ${entrance} .8s ease-out;
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
 `
 
 export const StyledContainer = styled(FlexContainer)`

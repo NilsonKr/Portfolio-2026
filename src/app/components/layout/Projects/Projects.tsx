@@ -1,17 +1,16 @@
 'use client'
 
-import { useRef, useContext } from 'react'
+import { useRef } from 'react'
 import { useScroll, type MotionValue } from 'motion/react'
 
 import { StyledProjectsContainer, StyledStickyContainer, StyledTitleContainer, StyledTitleComponent } from './projects.styled'
-
-import { ContentfulContext } from '../../../context/contentfulClient'
 
 import { withProjectItemAnimation, withProjectsTitleAnimation } from './projects.animated'
 
 import ProjectItem from './ProjectItem'
 
 import { PersonalProjectData } from '@/app/types/data'
+import { TypePersonalProjects } from '@/app/types/contentful'
 
 const animatedProjectParams = {
   1: {
@@ -46,7 +45,6 @@ const animatedProjectItems = {
   3: withProjectItemAnimation(ProjectItem, animatedProjectParams[3]),
 }
 
-
 const animatedTitleParams = {
   'first': {
     entranceTrigger: [0.35, 0.55],
@@ -67,12 +65,12 @@ const SecondTitleAnimated = withProjectsTitleAnimation(StyledTitleComponent, ani
 
 
 type ComponentProps = {
+  personalProjects: TypePersonalProjects[]
   aboutMeScrollYProgress: MotionValue<number>
   $inView: boolean
 }
 
-const Projects: React.FC<ComponentProps> = ({ aboutMeScrollYProgress, $inView }) => {
-  const { personalProjects } = useContext(ContentfulContext)
+const Projects: React.FC<ComponentProps> = ({ personalProjects, aboutMeScrollYProgress, $inView }) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const { scrollYProgress } = useScroll({

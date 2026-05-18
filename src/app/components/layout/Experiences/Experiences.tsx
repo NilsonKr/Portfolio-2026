@@ -1,20 +1,17 @@
 'use client'
 
-import { useContext } from 'react'
-
 import type { MotionValue } from 'motion/react'
 
 import { StyledExperiencesContainer, StyledStickyContainer, StyledTopTitle, StyledBottomTitle, StyledExperiencesList } from "./experiences.styled"
-
-import { ContentfulContext } from '../../../context/contentfulClient'
 
 import { ExperienceData } from '@/app/types/data'
 
 import withExperiencesTitleAnimationHOC from '../../HOC/ExperiencesTitleAnimated'
 import withExperienceItemAnimationHOC from '../../HOC/ExperienceItemAnimated'
 
-import TitleComponent from "../../TitleComponent"
 import ExperienceItem from './ExperienceItem'
+
+import { TypeExperiences } from '@/app/types/contentful'
 
 const TopTitleAnimated = withExperiencesTitleAnimationHOC(StyledTopTitle, {
   xTrigger: [0.35, 0.45],
@@ -54,13 +51,12 @@ const animatedExperiences = {
 }
 
 type ComponentProps = {
+  experiences: TypeExperiences[]
   containerRef: React.RefObject<HTMLDivElement | null>
   scrollYProgress: MotionValue<number>
 }
 
-const Experiences: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) => {
-  const { experiences } = useContext(ContentfulContext)
-
+const Experiences: React.FC<ComponentProps> = ({ experiences, containerRef, scrollYProgress }) => {
   return (
     <StyledExperiencesContainer ref={containerRef}>
       <StyledStickyContainer>

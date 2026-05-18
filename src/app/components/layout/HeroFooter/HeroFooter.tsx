@@ -1,3 +1,5 @@
+'use client'
+
 import { motion, useTransform, type MotionValue } from 'motion/react'
 import { IoMdArrowRoundUp } from 'react-icons/io'
 

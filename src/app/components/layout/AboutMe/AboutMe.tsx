@@ -1,13 +1,11 @@
 'use client'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { useContext, RefObject, useState } from 'react'
+import { RefObject, useState } from 'react'
 import type { MotionValue } from 'motion/react'
 import Image from 'next/image'
 
 import { StyledAboutMeContainer, StyledStickyContainer, StyledLayout } from './aboutMe.styled'
 import { PictureAnimated, DescriptionAnimated, LinksAnimated, SaluteHandAnimated } from './aboutMe.animated'
-
-import { ContentfulContext } from '../../../context/contentfulClient'
 
 import FlexContainer from '../../FlexContainer'
 import SubtitleComponent from '../../SubtitleComponent'
@@ -15,14 +13,16 @@ import ParagraphComponent from '../../ParagraphComponent'
 import GlassContainer from "../../GlassContainer"
 import DownloadCVButton from './DownloadCVButton'
 
+import { TypeAboutMe } from '@/app/types/contentful'
+
 
 type ComponentProps = {
-  containerRef: RefObject<null>
+  aboutMe: TypeAboutMe
+  containerRef: RefObject<HTMLDivElement | null>
   scrollYProgress: MotionValue<number>
 }
 
-const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) => {
-  const { aboutMe } = useContext(ContentfulContext)
+const AboutMe: React.FC<ComponentProps> = ({ aboutMe, containerRef, scrollYProgress }) => {
 
   const [pictureHovered, setPictureHovered] = useState(false)
 
@@ -66,13 +66,13 @@ const AboutMe: React.FC<ComponentProps> = ({ containerRef, scrollYProgress }) =>
             {cvUrl && <DownloadCVButton cvUrl={cvUrl} fileName={cvFileName} />}
 
             <FlexContainer gap='18px' margin='30px 0 0' justify='center'>
-              <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.github, '_blank')}>
+              <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' href={aboutMe?.fields.github as string}>
                 <FaGithub size={30} />
               </GlassContainer>
-              <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.linkedIn, '_blank')} style={{ transform: 'translateY(10px)' }}>
+              <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' href={aboutMe?.fields.linkedIn as string} style={{ transform: 'translateY(10px)' }}>
                 <FaLinkedin size={30} />
               </GlassContainer>
-              <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' onClick={() => window.open(aboutMe?.fields.getonboard, '_blank')}>
+              <GlassContainer floatingAnimation floatingShadow borderRadius='50%' cursor='pointer' href={aboutMe?.fields.getonboard as string}>
                 <Image src='/getonbrd.svg' alt='Get on Board' width={30} height={30} style={{ filter: 'grayscale(100%)' }} />
               </GlassContainer>
             </FlexContainer>

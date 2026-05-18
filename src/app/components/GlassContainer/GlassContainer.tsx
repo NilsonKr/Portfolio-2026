@@ -20,7 +20,7 @@ export type GlassContainerProps = {
   style?: React.CSSProperties
   floatingShadow?: boolean
   floatingAnimation?: boolean
-  onClick?: () => void
+  href: string
 }
 
 
@@ -44,7 +44,7 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
   style,
   floatingShadow,
   floatingAnimation,
-  onClick,
+  href
 }) => {
   return (
     <StyledGlassWrapper $floatingAnimation={floatingAnimation}>
@@ -65,7 +65,8 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
         as={as}
         $cursor={cursor}
         style={style}
-        onClick={onClick}
+        href={href}
+        target='_blank'
       >
         {children}
       </StyledGlassContainer>

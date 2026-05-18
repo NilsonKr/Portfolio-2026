@@ -45,7 +45,7 @@ export const StyledFloatingShadow = styled.div`
   z-index: -1;
 `
 
-export const StyledGlassContainer = styled.div<StyledProps>`
+export const StyledGlassContainer = styled.a<StyledProps>`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -7,11 +7,10 @@ import GlowBackground from '../../GlowBackground'
 import TagComponent from '../../TagComponent'
 
 type ComponentProps = {
-  containerRef: React.RefObject<null>
 }
-const Hero: React.FC<ComponentProps> = ({ containerRef }) => {
+const Hero: React.FC<ComponentProps> = () => {
   return (
-    <HeroBackgroundContainer ref={containerRef}>
+    <HeroBackgroundContainer>
       <HeroTextContainer>
         <StyledTitle>
           <TitleComponent fontWeight={700} fontSize='clamp(2.2rem, 5.5vw, 7.5rem)' zIndex={100} textShadow='0px 10px 15px rgba(0, 0, 0, 0.5)' gradient='radial-gradient( circle farthest-corner at 32.7% 82.7%, rgba(173,0,171,1) 8.3%, #340f5c 79.4% )'>

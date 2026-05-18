@@ -5,7 +5,6 @@ import { withOrbBackgroundAnimation } from './experienceItem.animate'
 
 import SubtitleComponent from '@/app/components/SubtitleComponent'
 import ParagraphComponent from '@/app/components/ParagraphComponent'
-import FlexContainer from '@/app/components/FlexContainer'
 
 import { ExperienceData } from '@/app/types/data'
 
