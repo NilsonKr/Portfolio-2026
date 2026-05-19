@@ -6,7 +6,7 @@ import { media } from '@/app/utils/theme'
 export const StyledDotsBackground = styled(motion.div).attrs({
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.7, ease: 'linear', delay: 4 },
+  transition: { duration: 0.7, ease: 'linear', delay: 2.5 },
 })`
   position: absolute;
   display: flex;

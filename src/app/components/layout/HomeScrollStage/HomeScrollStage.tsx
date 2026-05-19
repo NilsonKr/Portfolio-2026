@@ -23,10 +23,11 @@ type ComponentProps = {
   aboutMe: TypeAboutMe
   personalProjects: TypePersonalProjects[]
   experiences: TypeExperiences[]
+  header: React.ReactNode
   footer: React.ReactNode
 }
 
-const HomeScrollStage: React.FC<ComponentProps> = ({ aboutMe, personalProjects, experiences, footer }) => {
+const HomeScrollStage: React.FC<ComponentProps> = ({ aboutMe, personalProjects, experiences, footer, header }) => {
   const experiencesRef = useRef<HTMLDivElement>(null)
   const personalProjectsRef = useRef<HTMLDivElement>(null)
   const aboutMeRef = useRef<HTMLDivElement>(null)
@@ -60,7 +61,7 @@ const HomeScrollStage: React.FC<ComponentProps> = ({ aboutMe, personalProjects, 
       <Wrapper>
         {dotsReady && <DotsBackgroundModule />}
 
-        <HeroHeader aboutMe={aboutMe as TypeAboutMe} />
+        {header}
         <Hero />
         <HeroFooter scrollYprogress={heroExitProgress} />
       </Wrapper>

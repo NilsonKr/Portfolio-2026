@@ -13,7 +13,7 @@ export const StyledIconsContainer = styled.div`
   transform: translateY(30px);
   opacity:0;
   animation: ${entrance} .8s ease-out;
-  animation-delay: 5s;
+  animation-delay: 4.5s;
   animation-fill-mode: forwards;
 `
 
